@@ -1,0 +1,11 @@
+INSERT INTO db.technology_components (technology_id, component_id, component_amount) VALUES (2, 3, 3);
+INSERT INTO db.technology_components (technology_id, component_id, component_amount) VALUES (5, 3, 2);
+INSERT INTO db.technology_components (technology_id, component_id, component_amount) VALUES (1, 4, 1);
+INSERT INTO db.technology_components (technology_id, component_id, component_amount) VALUES (1, 5, 2);
+INSERT INTO db.technology_components (technology_id, component_id, component_amount) VALUES (2, 5, 1);
+INSERT INTO db.technology_components (technology_id, component_id, component_amount) VALUES (5, 6, 2);
+INSERT INTO db.technology_components (technology_id, component_id, component_amount) VALUES (5, 7, 3);
+INSERT INTO db.technology_components (technology_id, component_id, component_amount) VALUES (3, 8, 2);
+INSERT INTO db.technology_components (technology_id, component_id, component_amount) VALUES (4, 8, 4);
+INSERT INTO db.technology_components (technology_id, component_id, component_amount) VALUES (3, 9, 4);
+INSERT INTO db.technology_components (technology_id, component_id, component_amount) VALUES (4, 10, 10);

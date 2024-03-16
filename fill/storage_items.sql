@@ -1,0 +1,10 @@
+INSERT INTO db.storage_items (id, drug_id, current_amount, original_amount, receipt_date) VALUES (1, 3, 9, 10, '2024-02-17');
+INSERT INTO db.storage_items (id, drug_id, current_amount, original_amount, receipt_date) VALUES (2, 4, 19, 20, '2024-03-16');
+INSERT INTO db.storage_items (id, drug_id, current_amount, original_amount, receipt_date) VALUES (4, 6, 8, 9, '2024-01-05');
+INSERT INTO db.storage_items (id, drug_id, current_amount, original_amount, receipt_date) VALUES (5, 7, 6, 9, '2024-03-15');
+INSERT INTO db.storage_items (id, drug_id, current_amount, original_amount, receipt_date) VALUES (9, 11, 40, 40, '2024-03-16');
+INSERT INTO db.storage_items (id, drug_id, current_amount, original_amount, receipt_date) VALUES (10, 12, 2, 2, '2024-03-15');
+INSERT INTO db.storage_items (id, drug_id, current_amount, original_amount, receipt_date) VALUES (11, 12, 1, 1, '2024-03-14');
+INSERT INTO db.storage_items (id, drug_id, current_amount, original_amount, receipt_date) VALUES (12, 3, 3, 3, '2024-02-29');
+INSERT INTO db.storage_items (id, drug_id, current_amount, original_amount, receipt_date) VALUES (13, 10, 0, 2, '2024-03-01');
+INSERT INTO db.storage_items (id, drug_id, current_amount, original_amount, receipt_date) VALUES (14, 12, 0, 2, '2024-03-01');
