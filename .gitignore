@@ -1,4 +1,11 @@
 .env
 .idea
+
 *__pycache__*
+
 *.aux
+*.log
+*.out
+*.gz
+*.loc
+*.toc
