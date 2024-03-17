@@ -37,6 +37,7 @@ try:
     ) as conn:
         try:
             with conn.cursor() as curs:
+                pass
                 # insert_doctors(conn, curs)
                 # insert_customers(conn, curs)
                 # insert_drugs(conn, curs)
@@ -47,12 +48,10 @@ try:
                 # insert_technologies(conn, curs)
                 # insert_technologies_components(conn, curs)
                 # insert_orders(conn, curs)
-                # insert_production_all(conn, curs)
+                insert_production_all(conn, curs)
                 # insert_values(conn, curs)
                 # insert_values_2(conn, curs)
-                insert_reserved_order_drugs(conn, curs)
-
-
+                # insert_reserved_order_drugs(conn, curs)
         except Error as error:
             print(error)
 
