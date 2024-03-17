@@ -123,7 +123,7 @@ create table if not exists orders
         primary key,
     prescription_id   int        not null,
     registration_date date       not null,
-    appointed_data    date       null,
+    appointed_date    date       null,
     obtaining_date    date       null,
     is_paid           tinyint(1) not null,
     customer_id       int        null,
@@ -131,19 +131,6 @@ create table if not exists orders
         foreign key (customer_id) references customers (id),
     constraint orders_prescriptions_id_fk
         foreign key (prescription_id) references prescriptions (id)
-);
-
-create table if not exists orders_ready_drugs
-(
-    order_id int not null,
-    drug_id  int not null,
-    amount   int not null,
-    primary key (drug_id, order_id),
-    constraint orders_ready_drugs_drugs_id_fk
-        foreign key (drug_id) references drugs (id),
-    constraint orders_ready_drugs_orders_id_fk
-        foreign key (order_id) references orders (id),
-    check (`amount` >= 0)
 );
 
 create table if not exists orders_waiting_drug_supplies
@@ -261,9 +248,11 @@ create table if not exists technologies
 
 create table if not exists production
 (
-    order_id      int not null,
-    technology_id int not null,
-    amount        int not null,
+    order_id      int  not null,
+    technology_id int  not null,
+    amount        int  not null,
+    start_date    date null,
+    end_date      date null,
     constraint production_orders_id_fk
         foreign key (order_id) references orders (id),
     constraint production_technologies_id_fk

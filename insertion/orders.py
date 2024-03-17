@@ -10,7 +10,7 @@ from settings import ORDERS_PRESCRIPTIONS_COUNT, CUSTOMERS_COUNT
 
 
 def insert_order(cursor: MySQLCursorAbstract, order_id: int, prescription_id: int, registration_date: date, appointed_date: Optional[date], is_paid: bool, obtaining_date: Optional[date], customer_id: Optional[int]) -> None:
-    sql = "INSERT INTO db.orders (id, prescription_id, registration_date, appointed_data, obtaining_date, is_paid, customer_id)\
+    sql = "INSERT INTO db.orders (id, prescription_id, registration_date, appointed_date, obtaining_date, is_paid, customer_id)\
     VALUES (%s, %s, %s, %s, %s, %s, %s)"
     val = (order_id, prescription_id, registration_date, appointed_date, obtaining_date, is_paid, customer_id)
     cursor.execute(sql, val)

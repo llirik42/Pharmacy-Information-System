@@ -6,7 +6,6 @@ from insertion.customers import insert_customers
 from insertion.doctors import insert_doctors
 from insertion.drugs import insert_drugs
 from insertion.orders import insert_orders
-from insertion.orders_ready_drugs import insert_values_2
 from insertion.orders_waiting_drug_supplies import insert_values
 from insertion.patients import insert_patients
 from insertion.prescriptions import insert_prescriptions
@@ -48,7 +47,7 @@ try:
                 # insert_technologies(conn, curs)
                 # insert_technologies_components(conn, curs)
                 # insert_orders(conn, curs)
-                insert_production_all(conn, curs)
+                # insert_production_all(conn, curs)
                 # insert_values(conn, curs)
                 # insert_values_2(conn, curs)
                 # insert_reserved_order_drugs(conn, curs)
