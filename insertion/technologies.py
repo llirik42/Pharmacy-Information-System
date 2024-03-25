@@ -39,8 +39,8 @@ def insert_technologies(db: Union[PooledMySQLConnection, MySQLConnectionAbstract
             technology_id=i+1,
             drug_id=drug_id,
             cooking_time=random.randint(15, 14440) // 15 * 15,
-            amount=random.randint(1, 10),
-            description=t.sentence()
+            amount=random.randint(10, 100) // 10 * 10,
+            description=' '.join(t.words())
         )
 
     db.commit()

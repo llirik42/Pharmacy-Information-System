@@ -1,9 +1,0 @@
-INSERT INTO db.prescriptions_content (prescription_id, drug_id, amount, administration_route_id) VALUES (15, 10, 1, 1);
-INSERT INTO db.prescriptions_content (prescription_id, drug_id, amount, administration_route_id) VALUES (16, 8, 2, 2);
-INSERT INTO db.prescriptions_content (prescription_id, drug_id, amount, administration_route_id) VALUES (16, 10, 1, 1);
-INSERT INTO db.prescriptions_content (prescription_id, drug_id, amount, administration_route_id) VALUES (17, 3, 1, 1);
-INSERT INTO db.prescriptions_content (prescription_id, drug_id, amount, administration_route_id) VALUES (17, 8, 1, 1);
-INSERT INTO db.prescriptions_content (prescription_id, drug_id, amount, administration_route_id) VALUES (18, 9, 1, 1);
-INSERT INTO db.prescriptions_content (prescription_id, drug_id, amount, administration_route_id) VALUES (19, 4, 1, 2);
-INSERT INTO db.prescriptions_content (prescription_id, drug_id, amount, administration_route_id) VALUES (20, 12, 4, 2);
-INSERT INTO db.prescriptions_content (prescription_id, drug_id, amount, administration_route_id) VALUES (21, 10, 2, 1);
