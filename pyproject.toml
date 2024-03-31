@@ -5,7 +5,6 @@ package-mode = false
 python = "^3.12"
 python-dotenv = "^1.0.1"
 mysql-connector-python = "^8.3.0"
-mimesis = "^15.1.0"
 
 
 [build-system]
