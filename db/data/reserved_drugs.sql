@@ -1,0 +1,10 @@
+INSERT INTO db.reserved_drugs (order_id, storage_item_id, drug_amount) VALUES (7, 28, 9);
+INSERT INTO db.reserved_drugs (order_id, storage_item_id, drug_amount) VALUES (34, 7, 8);
+INSERT INTO db.reserved_drugs (order_id, storage_item_id, drug_amount) VALUES (46, 6, 7);
+INSERT INTO db.reserved_drugs (order_id, storage_item_id, drug_amount) VALUES (49, 22, 3);
+INSERT INTO db.reserved_drugs (order_id, storage_item_id, drug_amount) VALUES (52, 4, 9);
+INSERT INTO db.reserved_drugs (order_id, storage_item_id, drug_amount) VALUES (82, 33, 3);
+INSERT INTO db.reserved_drugs (order_id, storage_item_id, drug_amount) VALUES (84, 20, 5);
+INSERT INTO db.reserved_drugs (order_id, storage_item_id, drug_amount) VALUES (128, 31, 3);
+INSERT INTO db.reserved_drugs (order_id, storage_item_id, drug_amount) VALUES (132, 6, 8);
+INSERT INTO db.reserved_drugs (order_id, storage_item_id, drug_amount) VALUES (142, 9, 3);

@@ -64,55 +64,55 @@
 			
 		\subsection{Описание таблиц}
 			\begin{itemize}
-				\item \dbtable{administration\_routes} --- способы применения лекарств (идентификатор способа, название);
-					
-				\item \dbtable{drug\_types} --- типы лекарств (идентификатор типа, название);
-					
-				\item \dbtable{drug\_types\_administration\_routes} --- соответствие между типами лекарств и способами их применения (идентификатор типа, идентификатор способа);
-					
-				\item \dbtable{customers} --- клиенты аптеки (идентификатор клиента, ФИО, номер телефона, адрес);
-					
-				\item \dbtable{doctors} --- врачи, которые выписывают рецепты для больных (идентификатор врача, ФИО);
-					
-				\item \dbtable{patients} --- пациенты, то есть те, на кого выписывают рецепты (идентификатор пациента, ФИО, дата рождения);
-					
-				\item \dbtable{suppliers} --- поставщики лекарств в аптеку (идентификатор поставщика, название, номер телефона);
-					
-				\item \dbtable{prescriptions} --- рецепты, выписанные больным врачами (идентификатор рецепта, диагноз, идентификатор пациента, идентификатор врача, дата);
-					
+				\item \dbtable{administration\_routes} --- способы применения лекарств (идентификатор способа, описание);
+				
+				\item \dbtable{drug\_types} --- типы лекарств (идентификатор типа, название, являются ли приготовляемыми лекарства данного типа);
+				
 				\item \dbtable{mixture\_types} --- типы микстур (идентификатор типа, название);
-					
-				\item \dbtable{drugs} --- лекарства (идентификатор лекарства, название, стоимость, срок годности, критическая норма, идентификатор типа --- из \dbtableref{drug\_types}, описание);
-					
+				
+				\item \dbtable{patients} --- пациенты, то есть те, на кого выписывают рецепты (идентификатор пациента, ФИО, дата рождения);
+				
+				\item \dbtable{doctors} --- врачи, которые выписывают рецепты для больных (идентификатор врача, ФИО);
+				
+				\item \dbtable{customers} --- клиенты аптеки (идентификатор клиента, ФИО, номер телефона, адрес);
+				
+				\item \dbtable{suppliers} --- поставщики лекарств в аптеку (идентификатор поставщика, название, номер телефона);
+				
+				\item \dbtable{drugs} --- лекарства (идентификатор лекарства, название, стоимость, срок годности в часах, критическая норма, идентификатор типа --- из \dbtableref{drug\_types}, описание);
+				
 				\item \dbtable{mixtures} --- микстуры (идентификатор лекарства --- из \dbtableref{drugs}, растворитель, идентификатор типа микстуры --- из \dbtableref{mixture\_types});
-					
-				\item \dbtable{pills} --- таблетки (идентификатор лекарства --- из \dbtableref{drugs}, масса одной таблетки, масса пачки таблеток);
-					
+				
+				\item \dbtable{pills} --- таблетки (идентификатор лекарства --- из \dbtableref{drugs}, масса одной таблетки, количество таблеток в упаковке);
+				
 				\item \dbtable{powders} --- порошки (идентификатор лекарства --- из \dbtableref{drugs}, составной порошок или нет);
 					
 				\item \dbtable{salves} --- мази (идентификатор лекарства --- из \dbtableref{drugs}, действующее вещество);
-					
+				
 				\item \dbtable{solutions} --- растворы (идентификатор лекарства --- из \dbtableref{drugs}, концентрация);
-					
+				
 				\item \dbtable{tinctures} --- настойки (идентификатор лекарства --- из \dbtableref{drugs}, материал);
-					
+				
+				\item \dbtable{drug\_types\_administration\_routes} --- соответствие между типами лекарств и способами их применения (идентификатор типа, идентификатор способа);
+						
+				\item \dbtable{prescriptions} --- рецепты, выписанные больным врачами (идентификатор рецепта, диагноз, идентификатор пациента, идентификатор врача, дата);
+				
+				\item \dbtable{orders} --- заказы (идентификатор заказа, идентификатор рецепта --- из \dbtableref{prescriptions}, дата и время регистрации, назначенные дата и время получения заказа, реальные дата и время получения заказа, оплачен ли заказ, идентификатор клиента --- из \dbtableref{customers});
+				
 				\item \dbtable{prescriptions\_content} --- состав рецептов (идентификатор рецепта --- из \dbtableref{prescriptions}, идентификатор лекарства --- из \dbtableref{drugs}, количество лекарства, способ применения --- из \dbtableref{administration\_routes});
-					
-				\item \dbtable{storage\_items} --- позиции лекарств на складе (идентификатор позиции, идентификатор лекарства --- из \dbtableref{drugs}, текущее количество лекарства в позиции на складе, исходное количество лекарства в позиции на складе; дата получения);
-					
-				\item \dbtable{supplies} --- поставки лекарств от поставщиков (идентификатор поставки, идентификатор лекарства --- из \dbtableref{drugs}, количество лекарства, общая стоимость, идентификатор поставщика --- из \dbtableref{suppliers}, дата поставки);
+				
+				\item \dbtable{storage\_items} --- позиции лекарств на складе (идентификатор позиции, идентификатор лекарства --- из \dbtableref{drugs}, доступное количество лекарства в позиции на складе, исходное количество лекарства в позиции на складе; дата и время получения на складе);
+				
+				\item \dbtable{supplies} --- поставки лекарств от поставщиков (идентификатор поставки, идентификатор лекарства --- из \dbtableref{drugs}, количество лекарства, общая стоимость, назначенные дата и время поставки, реальные дата и время поставки, идентификатор поставщика --- из \dbtableref{suppliers});
 					
 				\item \dbtable{technologies} --- справочник технологий приготовления лекарств (идентификатор технологии, идентификатор лекарства --- из \dbtableref{drugs}, время приготовления, количество приготовляемого лекарства, инструкция);
 					
 				\item \dbtable{technology\_components} --- лекарства, требуемые для приготовления лекарств по технологиям (идентификатор технологии --- из \dbtableref{technologies}, идентификатор лекарства, требуемого для технологии --- из \dbtableref{drugs}, количество данного лекарства, требуемого для технологии);
-					
-				\item \dbtable{orders} --- заказы (идентификатор заказа, идентификатор рецепта --- из \dbtableref{prescriptions}, дата регистрации, назначенная дата получения заказа, реальная дата получения заказа, оплачен ли заказ, идентификатор клиента --- из \dbtableref{customers});
-					
+								
+				\item \dbtable{production} --- приготовление лекарства для заказов (идентификатор заказа --- из \dbtableref{orders}, идентификатор технологии приготовления лекарства --- из \dbtableref{technologies}, количество процессов приготовления лекарства, дата и время начала готовки, дата и время завершения готовки).
+								
 				\item \dbtable{orders\_waiting\_drug\_supplies} --- поставки каких лекарств нужны для заказов (идентификатор заказа --- из \dbtableref{orders}, идентификатор лекарства --- из \dbtableref{drugs}, количество лекарства);
 					
 				\item \dbtable{reserved\_drugs} --- какие лекарства со склада зарезервированы для заказов (идентификатор заказа --- из \dbtableref{orders}, идентификатор позиции склада --- из \dbtableref{storage\_items}, количество лекарства);
-					
-				\item \dbtable{production} --- приготовление лекарства для заказов (идентификатор заказа --- из \dbtableref{orders}, идентификатор технологии приготовления лекарства --- из \dbtableref{technologies}, количество процессов приготовления лекарства, дата начала готовки, дата завершения готовки).
 			\end{itemize}
 		\subsection{Создание таблиц}
 			\lstinputlisting[
@@ -120,53 +120,89 @@
 				backgroundcolor=\color{backcolour},
 				basicstyle=\scriptsize,
 				caption={SQL-скрипт для создания таблиц базы данных}
-			]{../scheme.sql}
+			]{../db/scheme.sql}
 		\subsection{Ограничения по поддержанию целостности}
 			\begin{itemize}
 				\item Любой посетитель аптеки должен иметь рабочий российский номер телефона и корректный российский адрес проживания (столбцы \dbtableref{phone\_number} и \dbtableref{address} в таблице \dbtable{customers}); 
 				
-				\item Стоимость любого лекарство должна быть выше чем суммарная стоимость компонент для изготовления этого лекарства по всем технологиями (таблицы \dbtable{technologies} и \dbtable{technology\_components}) его приготовления; Это должно проверяться триггером при добавлении новой записи в таблицу \dbtable{technology\_components};
+				\item Стоимость любого лекарство должна быть выше чем суммарная стоимость компонент для изготовления этого лекарства по всем технологиями (таблицы \dbtable{technologies} и \dbtable{technology\_components}) его приготовления;
 				
 				\item Для любой технологии должна быть хотя бы одна запись в таблице требуемых для неё компонентов;
 				
-				\item Если для изготовления лекарства существует какая-то технология, то это лекарство должно иметь изготовляемый тип (столбец \dbtableref{is\_cookable} в таблице \dbtable{drug\_types}). Это должно проверяться триггером при добавлении новой записи в таблицу \dbtable{technologies};
+				\item Если для изготовления лекарства существует какая-то технология, то это лекарство должно иметь изготовляемый тип (столбец \dbtableref{cookable} в таблице \dbtable{drug\_types}).
 				
 				\item Любой поставщик должен иметь рабочий российский номер телефона \newline (столбец \dbtableref{phone\_number} в таблице \dbtable{suppliers});
 				
-				\item Способ применения лекарства в рецепте (столбец \dbtableref{administration\_route\_id} в таблице \dbtable{prescriptions\_content}) должен быть допустим для этого лекарства в соответствии с его типом (эта информация хранится в таблице \dbtable{drug\_types\_administration\_routes}); Это должно проверяться триггером при добавлении новой записи в таблицу \newline \dbtable{prescriptions\_content};
+				\item Способ применения лекарства в рецепте (столбец \dbtableref{administration\_route\_id} в таблице \dbtable{prescriptions\_content}) должен быть допустим для этого лекарства в соответствии с его типом (эта информация хранится в таблице \dbtable{drug\_types\_administration\_routes});
 				
-				\item Любой пациент должен иметь дату рождения, которая не больше чем дата добавления пациента в таблицу (столбец \dbtableref{birthday} в таблице \dbtableref{patients}); Это должно проверяться при добавлении новой записи в таблицу \dbtable{patients};
+				\item Любой пациент должен иметь дату рождения, которая не больше чем дата добавления пациента в таблицу (столбец \dbtableref{birthday} в таблице \dbtableref{patients});
 				
-				\item Дата регистрации любого заказа должна быть больше даты выписки рецепта, соответствующего этому заказу (столбец \dbtableref{registration\_date} в таблице \dbtable{orders} и столбец \dbtableref{date} в таблице \dbtable{prescriptions}); Это должно проверяться триггером при добавлении новой записи в таблицу \dbtable{orders};
+				\item Дата регистрации любого заказа должна быть больше даты выписки рецепта, соответствующего этому заказу (столбец \dbtableref{registration\_datetime} в таблице \dbtable{orders} и столбец \dbtableref{date} в таблице \dbtable{prescriptions});
 				
-				\item Если какой-нибудь заказ забрали, то он обязательно оплачен (если в таблице \dbtable{orders} столбец \dbtableref{obtaining\_date} не $null$, то столбец \dbtableref{is\_paid} должен быть $True$). Это должно проверяться триггером при изменении полей \dbtableref{obtaining\_date} и \dbtableref{is\_paid} любой записи таблицы \dbtable{orders};
+				\item Если какой-нибудь заказ забрали, то он обязательно оплачен (если в таблице \dbtable{orders} столбец \dbtableref{obtaining\_datetime} не $null$, то столбец \dbtableref{paid} должен быть $True$);
 				
-				\item Если какой-нибудь заказ был забран, то у него должна быть назначенная дата и наоборот (если столбец \dbtableref{obtaining\_date} не $null$, то столбец \dbtableref{appointed\_date} не $null$ в таблице \dbtable{orders} и наоборот); Это должно проверяться триггером при изменении полей \dbtableref{obtaining\_date} и \dbtableref{appointed\_date} любой записи таблицы \dbtable{orders};
+				\item Если какой-нибудь заказ был забран, то у него должна быть назначенная дата и наоборот (если столбец \dbtableref{obtaining\_datetime} не $null$, то столбец \dbtableref{appointed\_datetime} не $null$ в таблице \dbtable{orders} и наоборот);
 				
-				\item Дата регистрации любого заказа любого заказа должна быть не больше назначенной даты его получения, что в свою очередь должно быть не больше реальной даты его получения (столбцы \dbtableref{registration\_date}, \dbtableref{appointed\_date} и \dbtableref{obtaining\_date} в таблице \dbtable{orders}); Это должно проверяться при изменении полей \dbtableref{appointed\_date} и \dbtableref{obtaining\_date} любой записи таблицы \dbtableref{orders};
+				\item Дата регистрации любого заказа должна быть не больше назначенной даты его получения, что в свою очередь должно быть не больше реальной даты его получения (столбцы \dbtableref{registration\_datetime}, \dbtableref{appointed\_datetime} и \dbtableref{obtaining\_datetime} в таблице \dbtable{orders}); Это должно проверяться при изменении полей \dbtableref{appointed\_datetime} и \dbtableref{obtaining\_datetime} любой записи таблицы \dbtableref{orders};
 				
-				\item Никакой заказ не должен ждать поставки лекарств, которые для него не требуются, как и для любого заказа не должно изготовляться лекарств, которые для него не требуются. Это должно проверяться триггером при добавлении новой записи в таблицы \dbtable{production} и \dbtable{orders\_waiting\_drug\_supplies};
+				\item Никакой заказ не должен ждать поставки лекарств, которые для него не требуются, как и для любого заказа не должно изготовляться лекарств, которые для него не требуются;
 					
-				\item Дата получения поставки на склад должна быть больше чем текущая дата (столбец \dbtableref{receipt\_date} в таблице \dbtable{storage\_items}); Это должно проверяться триггером при добавлении новой записи в таблицу \dbtable{storage\_items};
+				\item Дата получения поставки на склад должна быть больше чем текущая дата (столбец \dbtableref{receipt\_datetime} в таблице \dbtable{storage\_items});
 				
-				\item Дата начала изготовления лекарства должна быть меньше даты окончания его изготовления (столбцы \dbtableref{start\_date} и \dbtableref{end\_date} в таблице \dbtable{production}). Это должно проверяться триггером при изменении поля \dbtableref{end\_date} любой записи таблицы \dbtable{production};
+				\item Дата начала изготовления лекарства должна быть меньше даты окончания его изготовления (столбцы \dbtableref{start\_datetime} и \dbtableref{end\_datetime} в таблице \dbtable{production});
 				
-				\item Если завершилось приготовление лекарства, то для этой партии лекарства должна добавиться запись на складе. Это должно осуществляться  триггером при изменении значения поля \dbtableref{end\_date} любой записи таблицы \dbtable{production};
+				\item Если завершилось приготовление лекарства, то для этой партии лекарства должна добавиться запись на складе;
 			
-				\item Если для какого-то заказа было зарезервировано некоторое лекарство в некотором количестве, то количество доступного лекарства на складе из этой партии должно уменьшиться на соответствующее количество. Это должно осуществляться триггером при добавлении новой записи в таблицу \dbtable{reserved\_drugs};		
+				\item Если для какого-то заказа было зарезервировано некоторое лекарство в некотором количестве, то количество доступного лекарства на складе из этой партии должно уменьшиться на соответствующее количество.
 			\end{itemize}
 	\newpage
 	\section{Реализация запросов к базы данных}
 		\begin{enumerate}			
 			\item Получить сведения о покупателях, которые не пришли забрать свой заказ в назначенное им время и общее их число.
-			
-			\lstinputlisting[
-				language=SQL,
-				backgroundcolor=\color{backcolour},
-				basicstyle=\scriptsize,
-			]{../queries/1.sql}
-			
+				
+				\lstinputlisting[
+					language=SQL,
+					backgroundcolor=\color{backcolour},
+					basicstyle=\scriptsize,
+					caption={Сведения о покупателях}
+				]{../queries/1-1.sql}
+				
+				\lstinputlisting[
+					language=SQL,
+					backgroundcolor=\color{backcolour},
+					basicstyle=\scriptsize,
+					caption={Общее число покупателей}
+				]{../queries/1-2.sql}
+
 			\item Получить перечень и общее число покупателей, которые ждут прибытия на склад нужных им медикаментов в целом и по указанной категории медикаментов.
+			
+				\lstinputlisting[
+					language=SQL,
+					backgroundcolor=\color{backcolour},
+					basicstyle=\scriptsize,
+					caption={Перечень покупателей (в целом)}
+				]{../queries/2-1.sql}
+			
+				\lstinputlisting[
+					language=SQL,
+					backgroundcolor=\color{backcolour},
+					basicstyle=\scriptsize,
+					caption={Общее число покупателей (в целом)}
+				]{../queries/2-2.sql}
+			
+				\lstinputlisting[
+					language=SQL,
+					backgroundcolor=\color{backcolour},
+					basicstyle=\scriptsize,
+					caption={Перечень покупателей (по указанной категории)},
+				]{../queries/2-3.sql}
+			
+				\lstinputlisting[
+					language=SQL,
+					backgroundcolor=\color{backcolour},
+					basicstyle=\scriptsize,
+					caption={Общее число покупателей (по указанной категории)}
+				]{../queries/2-4.sql}
 			
 			\item Получить перечень десяти наиболее часто используемых медикаментов в целом и указанной категории медикаментов.
 			
@@ -174,74 +210,159 @@
 			
 			\item Получить перечень и общее число покупателей, заказывавших определенное лекарство или определенные типы лекарств за данный период.
 			
-			\lstinputlisting[
-				language=SQL,
-				backgroundcolor=\color{backcolour},
-				basicstyle=\scriptsize,
-				caption={5.1}
-			]{../queries/5-1.sql}
+				\lstinputlisting[
+					language=SQL,
+					backgroundcolor=\color{backcolour},
+					basicstyle=\scriptsize,
+					caption={Перечень покупателей, заказавших определённое лекарство за данный период}
+				]{../queries/5-1.sql}
+				
+				\lstinputlisting[
+					language=SQL,
+					backgroundcolor=\color{backcolour},
+					basicstyle=\scriptsize,
+					caption={Общее число покупателей, заказавших определённое лекарство за данный период}
+				]{../queries/5-2.sql}
 			
-			\lstinputlisting[
-				language=SQL,
-				backgroundcolor=\color{backcolour},
-				basicstyle=\scriptsize,
-				caption={5.2}
-			]{../queries/5-2.sql}
+				\lstinputlisting[
+					language=SQL,
+					backgroundcolor=\color{backcolour},
+					basicstyle=\scriptsize,
+					caption={Перечень покупателей, заказавших лекарство определённого типа за данный период}
+				]{../queries/5-3.sql}
+				
+				\lstinputlisting[
+					language=SQL,
+					backgroundcolor=\color{backcolour},
+					basicstyle=\scriptsize,
+					caption={Общее число покупателей, заказавших лекарство определённого типа за данный период}
+				]{../queries/5-4.sql}
 			
 			\item Получить перечень и типы лекарств, достигших своей критической нормы или закончившихся.
 			
+				\lstinputlisting[
+					language=SQL,
+					backgroundcolor=\color{backcolour},
+					basicstyle=\scriptsize,
+					caption={Перечень лекарств}
+				]{../queries/6-1.sql}
+				
+				\lstinputlisting[
+					language=SQL,
+					backgroundcolor=\color{backcolour},
+					basicstyle=\scriptsize,
+					caption={Типы лекарств}
+				]{../queries/6-2.sql}
+			
 			\item Получить перечень лекарств с минимальным запасом на складе в целом и по указанной категории медикаментов.
+			
+				\lstinputlisting[
+					language=SQL,
+					backgroundcolor=\color{backcolour},
+					basicstyle=\scriptsize,
+					caption={В целом}
+				]{../queries/7-1.sql}
+				
+				\lstinputlisting[
+					language=SQL,
+					backgroundcolor=\color{backcolour},
+					basicstyle=\scriptsize,
+					caption={По указанной категории медикаментов}
+				]{../queries/7-2.sql}
 			
 			\item Получить полный перечень и общее число заказов находящихся в производстве.
 			
-			\lstinputlisting[
-				language=SQL,
-				backgroundcolor=\color{backcolour},
-				basicstyle=\scriptsize,
-			]{../queries/8.sql}
+				\lstinputlisting[
+					language=SQL,
+					backgroundcolor=\color{backcolour},
+					basicstyle=\scriptsize,
+					caption={Полный перечень заказов}
+				]{../queries/8-1.sql}
+			
+				\lstinputlisting[
+					language=SQL,
+					backgroundcolor=\color{backcolour},
+					basicstyle=\scriptsize,
+					caption={Общее число заказов}
+				]{../queries/8-1.sql}
 			
 			\item Получить полный перечень и общее число препаратов требующихся для заказов, находящихся в производстве.
 			
+				\lstinputlisting[
+					language=SQL,
+					backgroundcolor=\color{backcolour},
+					basicstyle=\scriptsize,
+					caption={Полный перечень препаратов}
+				]{../queries/9-1.sql}
+				
+				\lstinputlisting[
+					language=SQL,
+					backgroundcolor=\color{backcolour},
+					basicstyle=\scriptsize,
+					caption={Общее число препаратов}
+				]{../queries/9-2.sql}
+			
 			\item Получить все технологии приготовления лекарств указанных типов, конкретных лекарств, лекарств, находящихся в справочнике заказов в производстве.
 			
-			\lstinputlisting[
-				language=SQL,
-				backgroundcolor=\color{backcolour},
-				basicstyle=\scriptsize,
-				caption={10.1}
-			]{../queries/10-1.sql}
-			
-			\lstinputlisting[
-				language=SQL,
-				backgroundcolor=\color{backcolour},
-				basicstyle=\scriptsize,
-				caption={10.2}
-			]{../queries/10-2.sql}
+				\lstinputlisting[
+					language=SQL,
+					backgroundcolor=\color{backcolour},
+					basicstyle=\scriptsize,
+					caption={Конкретных лекарств}
+				]{../queries/10-1.sql}
+				
+				\lstinputlisting[
+					language=SQL,
+					backgroundcolor=\color{backcolour},
+					basicstyle=\scriptsize,
+					caption={Лекарств данного типа}
+				]{../queries/10-2.sql}
+				
+				\lstinputlisting[
+					language=SQL,
+					backgroundcolor=\color{backcolour},
+					basicstyle=\scriptsize,
+					caption={Лекарств в справочнике заказов в производстве}
+				]{../queries/10-3.sql}
 			
 			\item Получить сведения о ценах на указанное лекарство в готовом виде, об объеме и ценах на все компоненты, требующиеся для этого лекарства.
 			
-			\lstinputlisting[
-				language=SQL,
-				backgroundcolor=\color{backcolour},
-				basicstyle=\scriptsize,
-			]{../queries/11.sql}
+				\lstinputlisting[
+					language=SQL,
+					backgroundcolor=\color{backcolour},
+					basicstyle=\scriptsize,
+				]{../queries/11.sql}
 			
 			\item Получить сведения о наиболее часто делающих заказы клиентах на медикаменты определенного типа, на конкретные медикаменты.
 			
+				\lstinputlisting[
+					language=SQL,
+					backgroundcolor=\color{backcolour},
+					basicstyle=\scriptsize,
+					caption={На определённый тип лекарств},
+				]{../queries/12-1.sql}
+				
+				\lstinputlisting[
+					language=SQL,
+					backgroundcolor=\color{backcolour},
+					basicstyle=\scriptsize,
+					caption={На конкретные медикаменты}
+				]{../queries/12-2.sql}
+			
 			\item Получить сведения о конкретном лекарстве (его тип, способ приготовления, названия всех компонент, цены, его количество на складе).
 			
-			\lstinputlisting[
-				language=SQL,
-				backgroundcolor=\color{backcolour},
-				basicstyle=\scriptsize,
-				caption={13.1}
-			]{../queries/13-1.sql}
-			
-			\lstinputlisting[
-				language=SQL,
-				backgroundcolor=\color{backcolour},
-				basicstyle=\scriptsize,
-				caption={13.2}
-			]{../queries/13-2.sql}
+				\lstinputlisting[
+					language=SQL,
+					backgroundcolor=\color{backcolour},
+					basicstyle=\scriptsize,
+					caption={Общие сведения о лекарстве}
+				]{../queries/13-1.sql}
+				
+				\lstinputlisting[
+					language=SQL,
+					backgroundcolor=\color{backcolour},
+					basicstyle=\scriptsize,
+					caption={Перечень технологий приготовления лекарства}
+				]{../queries/13-2.sql}
 		\end{enumerate}
 \end{document}

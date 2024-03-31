@@ -11,7 +11,7 @@ from (
     from orders
         join prescriptions_content on orders.id = prescriptions_content.prescription_id
         join customers on orders.customer_id = customers.id
-    where drug_id = 4
+    where drug_id = 1
     group by customer_id
     ) all_orders_count_data
-where dr = 1;
+where dr = 1

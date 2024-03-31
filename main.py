@@ -37,10 +37,12 @@ try:
         try:
             with conn.cursor() as curs:
                 pass
+                # insert_prescriptions_contents(conn, curs)
                 # insert_doctors(conn, curs)
                 # insert_customers(conn, curs)
                 # insert_drugs(conn, curs)
                 # insert_patients(conn, curs)
+                # insert_suppliers(conn, curs)
                 # insert_supplies(conn, curs)
                 # insert_storage_items(conn, curs)
                 # insert_prescriptions(conn, curs)
@@ -56,3 +58,4 @@ try:
 
 except Error as e:
     print(e)
+

@@ -12,7 +12,7 @@ from (
         join prescriptions_content on orders.id = prescriptions_content.prescription_id
         join drugs on prescriptions_content.drug_id = drugs.id
         join customers on orders.customer_id = customers.id
-    where type_id = 5
+    where type_id = 1
     group by customer_id
     ) all_orders_count_data
-where dr = 1;
+where dr = 1

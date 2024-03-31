@@ -1,5 +1,7 @@
 select
-    technologies.id as techonology_id,
-    technologies.description as technology_description
+    id as technology_id,
+    cooking_time,
+    amount,
+    description
 from technologies
-where drug_id = 3;
+where drug_id = 2
