@@ -70,6 +70,8 @@
 				
 				\item \dbtable{mixture\_types} --- типы микстур (идентификатор типа, название);
 				
+				\item \dbtable{lab\_workers} --- работники лаборатории аптеки, изготавливающие лекарства (идентификатор работника, ФИО);
+				
 				\item \dbtable{patients} --- пациенты, то есть те, на кого выписывают рецепты (идентификатор пациента, ФИО, дата рождения);
 				
 				\item \dbtable{doctors} --- врачи, которые выписывают рецепты для больных (идентификатор врача, ФИО);
@@ -108,22 +110,26 @@
 					
 				\item \dbtable{technology\_components} --- лекарства, требуемые для приготовления лекарств по технологиям (идентификатор технологии --- из \dbtableref{technologies}, идентификатор лекарства, требуемого для технологии --- из \dbtableref{drugs}, количество данного лекарства, требуемого для технологии);
 								
-				\item \dbtable{production} --- приготовление лекарства для заказов (идентификатор заказа --- из \dbtableref{orders}, идентификатор технологии приготовления лекарства --- из \dbtableref{technologies}, количество процессов приготовления лекарства, дата и время начала готовки, дата и время завершения готовки).
+				\item \dbtable{production} --- приготовления лекарств для заказов (идентификатор приготовления, идентификатор заказа --- из \dbtableref{orders}, идентификатор технологии приготовления лекарства --- из \dbtableref{technologies}, количество приготовляемого лекарства, дата и время начала готовки, дата и время завершения готовки).
 								
 				\item \dbtable{orders\_waiting\_drug\_supplies} --- поставки каких лекарств нужны для заказов (идентификатор заказа --- из \dbtableref{orders}, идентификатор лекарства --- из \dbtableref{drugs}, количество лекарства);
 					
 				\item \dbtable{reserved\_drugs} --- какие лекарства со склада зарезервированы для заказов (идентификатор заказа --- из \dbtableref{orders}, идентификатор позиции склада --- из \dbtableref{storage\_items}, количество лекарства);
+				
+				\item \dbtable{production\_lab\_workers} --- какие работники лаборатории участвуют в приготовлениях лекарств (идентификатор приготовления --- из таблицы \dbtableref{production}, идентификатор работника лаборатории --- \dbtableref{lab\_workers}).
 			\end{itemize}
 		\subsection{Создание таблиц}
 			\lstinputlisting[
 				language=SQL,
 				backgroundcolor=\color{backcolour},
 				basicstyle=\scriptsize,
-				caption={SQL-скрипт для создания таблиц базы данных}
+				title={SQL-скрипт для создания таблиц базы данных}
 			]{../db/scheme.sql}
 		\subsection{Ограничения по поддержанию целостности}
 			\begin{itemize}
 				\item Любой посетитель аптеки должен иметь рабочий российский номер телефона и корректный российский адрес проживания (столбцы \dbtableref{phone\_number} и \dbtableref{address} в таблице \dbtable{customers}); 
+				
+				\item В любом приготовлении должен принимать участие хотя как минимум один рабочий лаборатории;
 				
 				\item Стоимость любого лекарство должна быть выше чем суммарная стоимость компонент для изготовления этого лекарства по всем технологиями (таблицы \dbtable{technologies} и \dbtable{technology\_components}) его приготовления;
 				
@@ -153,216 +159,219 @@
 				
 				\item Если завершилось приготовление лекарства, то для этой партии лекарства должна добавиться запись на складе;
 			
+				\item Если для изготовления лекарств для какого-то заказа были взяты лекарства со склада, то количество этого лекарства на складе должно уменьшиться;
+			
 				\item Если для какого-то заказа было зарезервировано некоторое лекарство в некотором количестве, то количество доступного лекарства на складе из этой партии должно уменьшиться на соответствующее количество.
 			\end{itemize}
 	\newpage
 	\section{Реализация запросов к базы данных}
 		\begin{enumerate}			
 			\item Получить сведения о покупателях, которые не пришли забрать свой заказ в назначенное им время и общее их число.
-				
 				\lstinputlisting[
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					caption={Сведения о покупателях}
-				]{../queries/1-1.sql}
-				
+					title={Сведения о покупателях},
+					showstringspaces=false
+				]{../db/queries/1-1.sql}
 				\lstinputlisting[
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					caption={Общее число покупателей}
-				]{../queries/1-2.sql}
-
+					title={Общее число покупателей},
+					showstringspaces=false
+				]{../db/queries/1-2.sql}
 			\item Получить перечень и общее число покупателей, которые ждут прибытия на склад нужных им медикаментов в целом и по указанной категории медикаментов.
-			
 				\lstinputlisting[
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					caption={Перечень покупателей (в целом)}
-				]{../queries/2-1.sql}
-			
+					breaklines=true,
+					title={Перечень покупателей (в целом)},
+					showstringspaces=false
+				]{../db/queries/2-1.sql}
 				\lstinputlisting[
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					caption={Общее число покупателей (в целом)}
-				]{../queries/2-2.sql}
-			
+					breaklines=true,
+					title={Общее число покупателей (в целом)},
+					showstringspaces=false
+				]{../db/queries/2-2.sql}
 				\lstinputlisting[
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					caption={Перечень покупателей (по указанной категории)},
-				]{../queries/2-3.sql}
-			
+					breaklines=true,
+					title={Перечень покупателей (по указанной категории)},
+					showstringspaces=false
+				]{../db/queries/2-3.sql}
 				\lstinputlisting[
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					caption={Общее число покупателей (по указанной категории)}
-				]{../queries/2-4.sql}
-			
+					breaklines=true,
+					title={Общее число покупателей (по указанной категории)},
+					showstringspaces=false
+				]{../db/queries/2-4.sql}
 			\item Получить перечень десяти наиболее часто используемых медикаментов в целом и указанной категории медикаментов.
 			
 			\item  Получить какой объем указанных веществ использован за указанный период.
 			
 			\item Получить перечень и общее число покупателей, заказывавших определенное лекарство или определенные типы лекарств за данный период.
-			
 				\lstinputlisting[
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					caption={Перечень покупателей, заказавших определённое лекарство за данный период}
-				]{../queries/5-1.sql}
-				
+					title={Перечень покупателей, заказавших определённое лекарство за данный период},
+					showstringspaces=false
+				]{../db/queries/5-1.sql}
 				\lstinputlisting[
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					caption={Общее число покупателей, заказавших определённое лекарство за данный период}
-				]{../queries/5-2.sql}
-			
+					title={Общее число покупателей, заказавших определённое лекарство за данный период},
+					showstringspaces=false
+				]{../db/queries/5-2.sql}
 				\lstinputlisting[
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					caption={Перечень покупателей, заказавших лекарство определённого типа за данный период}
-				]{../queries/5-3.sql}
-				
+					title={Перечень покупателей, заказавших лекарство определённого типа за данный период},
+					showstringspaces=false
+				]{../db/queries/5-3.sql}
 				\lstinputlisting[
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					caption={Общее число покупателей, заказавших лекарство определённого типа за данный период}
-				]{../queries/5-4.sql}
-			
+					title={Общее число покупателей, заказавших лекарство определённого типа за данный период},
+					showstringspaces=false
+				]{../db/queries/5-4.sql}
 			\item Получить перечень и типы лекарств, достигших своей критической нормы или закончившихся.
-			
 				\lstinputlisting[
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					caption={Перечень лекарств}
-				]{../queries/6-1.sql}
-				
+					title={Перечень лекарств},
+					showstringspaces=false
+				]{../db/queries/6-1.sql}
 				\lstinputlisting[
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					caption={Типы лекарств}
-				]{../queries/6-2.sql}
-			
+					title={Типы лекарств},
+					showstringspaces=false
+				]{../db/queries/6-2.sql}
 			\item Получить перечень лекарств с минимальным запасом на складе в целом и по указанной категории медикаментов.
-			
 				\lstinputlisting[
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					caption={В целом}
-				]{../queries/7-1.sql}
-				
+					title={В целом},
+					showstringspaces=false
+				]{../db/queries/7-1.sql}
 				\lstinputlisting[
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					caption={По указанной категории медикаментов}
-				]{../queries/7-2.sql}
-			
+					title={По указанной категории медикаментов},
+					showstringspaces=false
+				]{../db/queries/7-2.sql}
 			\item Получить полный перечень и общее число заказов находящихся в производстве.
-			
 				\lstinputlisting[
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					caption={Полный перечень заказов}
-				]{../queries/8-1.sql}
-			
+					title={Полный перечень заказов},
+					showstringspaces=false
+				]{../db/queries/8-1.sql}
 				\lstinputlisting[
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					caption={Общее число заказов}
-				]{../queries/8-1.sql}
-			
+					title={Общее число заказов},
+					showstringspaces=false
+				]{../db/queries/8-1.sql}
 			\item Получить полный перечень и общее число препаратов требующихся для заказов, находящихся в производстве.
-			
 				\lstinputlisting[
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					caption={Полный перечень препаратов}
-				]{../queries/9-1.sql}
-				
+					breaklines=true,
+					title={Полный перечень препаратов},
+					showstringspaces=false
+				]{../db/queries/9-1.sql}
 				\lstinputlisting[
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					caption={Общее число препаратов}
-				]{../queries/9-2.sql}
-			
+					breaklines=true,
+					title={Общее число препаратов},
+					showstringspaces=false
+				]{../db/queries/9-2.sql}
 			\item Получить все технологии приготовления лекарств указанных типов, конкретных лекарств, лекарств, находящихся в справочнике заказов в производстве.
-			
 				\lstinputlisting[
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					caption={Конкретных лекарств}
-				]{../queries/10-1.sql}
-				
+					title={Конкретных лекарств},
+					showstringspaces=false
+				]{../db/queries/10-1.sql}
 				\lstinputlisting[
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					caption={Лекарств данного типа}
-				]{../queries/10-2.sql}
-				
+					title={Лекарств данного типа},
+					showstringspaces=false
+				]{../db/queries/10-2.sql}
 				\lstinputlisting[
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					caption={Лекарств в справочнике заказов в производстве}
-				]{../queries/10-3.sql}
-			
+					title={Лекарств в справочнике заказов в производстве},
+					showstringspaces=false
+				]{../db/queries/10-3.sql}
 			\item Получить сведения о ценах на указанное лекарство в готовом виде, об объеме и ценах на все компоненты, требующиеся для этого лекарства.
-			
 				\lstinputlisting[
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-				]{../queries/11.sql}
-			
+					breaklines=true,
+					showstringspaces=false
+				]{../db/queries/11.sql}
 			\item Получить сведения о наиболее часто делающих заказы клиентах на медикаменты определенного типа, на конкретные медикаменты.
-			
 				\lstinputlisting[
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					caption={На определённый тип лекарств},
-				]{../queries/12-1.sql}
-				
+					breaklines=true,
+					title={На определённый тип лекарств},
+					showstringspaces=false
+				]{../db/queries/12-1.sql}
 				\lstinputlisting[
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					caption={На конкретные медикаменты}
-				]{../queries/12-2.sql}
-			
+					breaklines=true,
+					title={На конкретные медикаменты},
+					showstringspaces=false
+				]{../db/queries/12-2.sql}
 			\item Получить сведения о конкретном лекарстве (его тип, способ приготовления, названия всех компонент, цены, его количество на складе).
-			
 				\lstinputlisting[
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					caption={Общие сведения о лекарстве}
-				]{../queries/13-1.sql}
-				
+					breaklines=true,
+					title={Сведения о конкретном лекарстве},
+					showstringspaces=false
+				]{../db/queries/13-1.sql}
 				\lstinputlisting[
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					caption={Перечень технологий приготовления лекарства}
-				]{../queries/13-2.sql}
+					breaklines=true,
+					title={Перечень технологий приготовления данного лекарства},
+					showstringspaces=false
+				]{../db/queries/13-2.sql}
 		\end{enumerate}
 \end{document}

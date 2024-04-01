@@ -20,6 +20,13 @@ create table if not exists mixture_types
     name text not null
 );
 
+create table if not exists lab_workers
+(
+    id        int auto_increment
+        primary key,
+    full_name text not null
+);
+
 create table if not exists patients
 (
     id        int auto_increment
@@ -246,17 +253,19 @@ create table if not exists technology_components
 
 create table if not exists production
 (
-    order_id       int      not null,
-    technology_id  int      not null,
-    amount         int      not null,
-    start_datetime datetime not null,
-    end_datetime   datetime null,
-    primary key (order_id, technology_id, start_datetime),
+    id            int auto_increment
+        primary key,
+    order_id      int      not null,
+    technology_id int      not null,
+    drug_amount   int      not null,
+    start         datetime not null,
+    end           datetime null,
     constraint production_orders_id_fk
         foreign key (order_id) references orders (id),
     constraint production_technologies_id_fk
         foreign key (technology_id) references technologies (id),
-    check (`amount` >= 0)
+    constraint drug
+        check (`drug_amount` > 0)
 );
 
 create table if not exists orders_waiting_drug_supplies
@@ -283,4 +292,14 @@ create table if not exists reserved_drugs
     constraint reserved_drugs_storage_items_id_fk
         foreign key (storage_item_id) references storage_items (id),
     check (`drug_amount` > 0)
+);
+
+create table if not exists production_lab_workers
+(
+    production_id int not null,
+    lab_worker_id int not null,
+    constraint production_lab_workers_lab_workers_id_fk
+        foreign key (lab_worker_id) references lab_workers (id),
+    constraint production_lab_workers_production_id_fk
+        foreign key (production_id) references production (id)
 );
