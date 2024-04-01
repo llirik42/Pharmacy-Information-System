@@ -162,14 +162,14 @@ create table if not exists prescriptions
 
 create table if not exists orders
 (
-    id                int auto_increment
+    id                    int auto_increment
         primary key,
-    prescription_id   int        not null,
-    registration_date datetime   not null,
-    appointed_date    datetime   null,
-    obtaining_date    datetime   null,
-    paid              tinyint(1) not null,
-    customer_id       int        null,
+    prescription_id       int        not null,
+    registration_datetime datetime   not null,
+    appointed_datetime    datetime   null,
+    obtaining_datetime    datetime   null,
+    paid                  tinyint(1) not null,
+    customer_id           int        null,
     constraint orders_customers_id_fk
         foreign key (customer_id) references customers (id),
     constraint orders_prescriptions_id_fk
