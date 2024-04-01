@@ -1,0 +1,5 @@
+- administration_routes -> enum
+
+- mixture_types -> enum
+
+- сделать 3,4 запросы
