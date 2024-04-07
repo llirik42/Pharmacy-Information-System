@@ -10,7 +10,7 @@ prepare stmt from '
             count(*) as orders_count,
             dense_rank() over (order by count(*) desc) as dr
         from orders
-            join prescriptions_content on orders.id = prescriptions_content.prescription_id
+            join prescriptions_content using (prescription_id)
             join customers on orders.customer_id = customers.id
         where drug_id = ?
         group by customer_id
@@ -18,6 +18,6 @@ prepare stmt from '
     where dr = 1
 ';
 
-set @drug_id = 2;
+set @drug_id = 3;
 
 execute stmt using @drug_id;

@@ -2,7 +2,7 @@ prepare stmt from '
     select distinct
         customers.*
     from prescriptions_content
-        join orders on orders.prescription_id = prescriptions_content.prescription_id
+        join orders using (prescription_id)
         join customers on orders.customer_id = customers.id
     where
         (registration_datetime between ? and ?)

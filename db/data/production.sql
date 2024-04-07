@@ -1,7 +1,7 @@
 INSERT INTO db.production (id, order_id, technology_id, drug_amount, start, end) VALUES (1, 6, 13, 2, '2023-01-08 00:42:35', null);
 INSERT INTO db.production (id, order_id, technology_id, drug_amount, start, end) VALUES (2, 17, 22, 3, '2023-08-27 22:56:40', null);
 INSERT INTO db.production (id, order_id, technology_id, drug_amount, start, end) VALUES (3, 22, 15, 6, '2023-07-05 10:05:21', '2023-07-25 08:44:33');
-INSERT INTO db.production (id, order_id, technology_id, drug_amount, start, end) VALUES (4, 24, 24, 5, '2023-05-08 09:16:02', null);
+INSERT INTO db.production (id, order_id, technology_id, drug_amount, start, end) VALUES (4, 24, 24, 5, null, null);
 INSERT INTO db.production (id, order_id, technology_id, drug_amount, start, end) VALUES (5, 29, 24, 1, '2023-02-09 16:02:40', null);
 INSERT INTO db.production (id, order_id, technology_id, drug_amount, start, end) VALUES (6, 40, 1, 5, '2023-01-23 23:54:31', null);
 INSERT INTO db.production (id, order_id, technology_id, drug_amount, start, end) VALUES (7, 45, 1, 2, '2023-08-07 18:38:33', '2023-12-18 13:35:56');
@@ -9,7 +9,7 @@ INSERT INTO db.production (id, order_id, technology_id, drug_amount, start, end)
 INSERT INTO db.production (id, order_id, technology_id, drug_amount, start, end) VALUES (9, 58, 11, 1, '2023-11-05 19:49:06', null);
 INSERT INTO db.production (id, order_id, technology_id, drug_amount, start, end) VALUES (10, 72, 15, 10, '2023-10-06 03:10:57', null);
 INSERT INTO db.production (id, order_id, technology_id, drug_amount, start, end) VALUES (11, 73, 2, 2, '2023-01-03 05:10:16', null);
-INSERT INTO db.production (id, order_id, technology_id, drug_amount, start, end) VALUES (12, 74, 3, 6, '2023-03-16 13:41:27', null);
+INSERT INTO db.production (id, order_id, technology_id, drug_amount, start, end) VALUES (12, 74, 3, 6, null, null);
 INSERT INTO db.production (id, order_id, technology_id, drug_amount, start, end) VALUES (13, 75, 14, 4, '2023-02-15 13:45:56', '2023-04-18 20:23:32');
 INSERT INTO db.production (id, order_id, technology_id, drug_amount, start, end) VALUES (14, 81, 9, 6, '2023-10-13 08:07:26', '2023-11-24 03:42:41');
 INSERT INTO db.production (id, order_id, technology_id, drug_amount, start, end) VALUES (15, 107, 12, 2, '2023-03-17 03:31:58', '2023-12-27 05:11:31');

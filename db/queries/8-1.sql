@@ -1,2 +1,4 @@
-select distinct orders.*
-from production join orders on production.order_id = orders.id
+select distinct
+    orders.*
+from production
+    join orders on production.order_id = orders.id

@@ -3,7 +3,7 @@ prepare stmt from '
 count(distinct customers.id) as customers_count
     from prescriptions_content
         join drugs on prescriptions_content.drug_id = drugs.id
-        join orders on orders.prescription_id = prescriptions_content.prescription_id
+        join orders using (prescription_id)
         join customers on orders.customer_id = customers.id
     where
         (registration_datetime between ? and ?)

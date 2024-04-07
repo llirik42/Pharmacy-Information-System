@@ -258,7 +258,7 @@ create table if not exists production
     order_id      int      not null,
     technology_id int      not null,
     drug_amount   int      not null,
-    start         datetime not null,
+    start         datetime null,
     end           datetime null,
     constraint production_orders_id_fk
         foreign key (order_id) references orders (id),

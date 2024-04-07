@@ -129,7 +129,7 @@
 			\begin{itemize}
 				\item Любой посетитель аптеки должен иметь рабочий российский номер телефона и корректный российский адрес проживания (столбцы \dbtableref{phone\_number} и \dbtableref{address} в таблице \dbtable{customers}); 
 				
-				\item В любом приготовлении должен принимать участие хотя как минимум один рабочий лаборатории;
+				\item В любом приготовлении должен принимать участие как минимум один рабочий лаборатории;
 				
 				\item Стоимость любого лекарство должна быть выше чем суммарная стоимость компонент для изготовления этого лекарства по всем технологиями (таблицы \dbtable{technologies} и \dbtable{technology\_components}) его приготовления;
 				
@@ -215,9 +215,33 @@
 					showstringspaces=false
 				]{../db/queries/2-4.sql}
 			\item Получить перечень десяти наиболее часто используемых медикаментов в целом и указанной категории медикаментов.
-			
+				\lstinputlisting[
+					language=SQL,
+					backgroundcolor=\color{backcolour},
+					basicstyle=\scriptsize,
+					showstringspaces=false,
+					breaklines=true,
+					showstringspaces=false,
+					title={В целом}
+				]{../db/queries/3-1.sql}
+				\lstinputlisting[
+					language=SQL,
+					backgroundcolor=\color{backcolour},
+					basicstyle=\scriptsize,
+					showstringspaces=false,
+					breaklines=true,
+					showstringspaces=false,
+					title={По указанной категории медикаментов}
+				]{../db/queries/3-2.sql}
 			\item  Получить какой объем указанных веществ использован за указанный период.
-			
+				\lstinputlisting[
+					language=SQL,
+					backgroundcolor=\color{backcolour},
+					basicstyle=\scriptsize,
+					showstringspaces=false,
+					breaklines=true,
+				showstringspaces=false
+				]{../db/queries/4.sql}
 			\item Получить перечень и общее число покупателей, заказывавших определенное лекарство или определенные типы лекарств за данный период.
 				\lstinputlisting[
 					language=SQL,
