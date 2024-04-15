@@ -21,7 +21,7 @@ prepare stmt from '
             group by drug_id
         ),
 
-        user_drugs as (
+        used_drugs as (
             select
                 drug_id,
                 drugs.name,
@@ -38,7 +38,7 @@ prepare stmt from '
             group by drug_id)
 
     select *
-    from user_drugs
+    from used_drugs
     order by drug_amount desc
     limit ?;
 ';
