@@ -1,5 +1,5 @@
-select
-    count(distinct customer_id) as customers_count
+select distinct
+    customers.*
 from orders
     join customers on orders.customer_id = customers.id
 where

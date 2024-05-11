@@ -131,7 +131,7 @@
 				
 				\item В любом приготовлении должен принимать участие как минимум один рабочий лаборатории;
 				
-				\item Стоимость любого лекарство должна быть выше чем суммарная стоимость компонент для изготовления этого лекарства по всем технологиями (таблицы \dbtable{technologies} и \dbtable{technology\_components}) его приготовления;
+				\item Стоимость любого лекарства должна быть выше чем суммарная стоимость компонент для изготовления этого лекарства по всем технологиями (таблицы \dbtable{technologies} и \dbtable{technology\_components}) его приготовления;
 				
 				\item Для любой технологии должна быть хотя бы одна запись в таблице требуемых для неё компонентов;
 				
@@ -173,14 +173,7 @@
 					basicstyle=\scriptsize,
 					title={Сведения о покупателях},
 					showstringspaces=false
-				]{../db/queries/1-1.sql}
-				\lstinputlisting[
-					language=SQL,
-					backgroundcolor=\color{backcolour},
-					basicstyle=\scriptsize,
-					title={Общее число покупателей},
-					showstringspaces=false
-				]{../db/queries/1-2.sql}
+				]{../db/queries/1.sql}
 			\item Получить перечень и общее число покупателей, которые ждут прибытия на склад нужных им медикаментов в целом и по указанной категории медикаментов.
 				\lstinputlisting[
 					language=SQL,
