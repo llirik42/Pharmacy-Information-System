@@ -1,10 +1,10 @@
-INSERT INTO db.doctors (id, full_name) VALUES (1, 'Соломатин Пров Тимурович');
-INSERT INTO db.doctors (id, full_name) VALUES (2, 'Николаевич Николай Юлианович');
-INSERT INTO db.doctors (id, full_name) VALUES (3, 'Литвинов Эраст Ермилович');
-INSERT INTO db.doctors (id, full_name) VALUES (4, 'Ильин Владимир Арсеньевич');
 INSERT INTO db.doctors (id, full_name) VALUES (5, 'Зыкин Никифор Артурович');
+INSERT INTO db.doctors (id, full_name) VALUES (4, 'Ильин Владимир Арсеньевич');
 INSERT INTO db.doctors (id, full_name) VALUES (6, 'Кох Фока Харлампьевич');
+INSERT INTO db.doctors (id, full_name) VALUES (3, 'Литвинов Эраст Ермилович');
+INSERT INTO db.doctors (id, full_name) VALUES (2, 'Николаевич Николай Юлианович');
 INSERT INTO db.doctors (id, full_name) VALUES (7, 'Пигасова Эльвина Валерьевна');
-INSERT INTO db.doctors (id, full_name) VALUES (8, 'Чиркова Виола Семёновна');
 INSERT INTO db.doctors (id, full_name) VALUES (9, 'Садофьев Христофор Зиновьевич');
 INSERT INTO db.doctors (id, full_name) VALUES (10, 'Свинаренко Акакий Демьянович');
+INSERT INTO db.doctors (id, full_name) VALUES (1, 'Соломатин Пров Тимурович');
+INSERT INTO db.doctors (id, full_name) VALUES (8, 'Чиркова Виола Семёновна');

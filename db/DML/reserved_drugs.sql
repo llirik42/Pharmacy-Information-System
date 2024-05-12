@@ -1,4 +1,5 @@
 INSERT INTO db.reserved_drugs (order_id, storage_item_id, drug_amount) VALUES (7, 28, 9);
+INSERT INTO db.reserved_drugs (order_id, storage_item_id, drug_amount) VALUES (7, 46, 89);
 INSERT INTO db.reserved_drugs (order_id, storage_item_id, drug_amount) VALUES (34, 7, 8);
 INSERT INTO db.reserved_drugs (order_id, storage_item_id, drug_amount) VALUES (46, 6, 7);
 INSERT INTO db.reserved_drugs (order_id, storage_item_id, drug_amount) VALUES (49, 22, 3);

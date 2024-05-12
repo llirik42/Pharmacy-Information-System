@@ -1,4 +1,4 @@
-INSERT INTO db.production (id, order_id, technology_id, drug_amount, start, end) VALUES (1, 6, 13, 2, '2023-01-08 00:42:35', null);
+INSERT INTO db.production (id, order_id, technology_id, drug_amount, start, end) VALUES (1, 6, 13, 2, '2024-04-28 17:55:59', null);
 INSERT INTO db.production (id, order_id, technology_id, drug_amount, start, end) VALUES (2, 17, 22, 3, '2023-08-27 22:56:40', null);
 INSERT INTO db.production (id, order_id, technology_id, drug_amount, start, end) VALUES (3, 22, 15, 6, '2023-07-05 10:05:21', '2023-07-25 08:44:33');
 INSERT INTO db.production (id, order_id, technology_id, drug_amount, start, end) VALUES (4, 24, 24, 5, null, null);
@@ -17,4 +17,8 @@ INSERT INTO db.production (id, order_id, technology_id, drug_amount, start, end)
 INSERT INTO db.production (id, order_id, technology_id, drug_amount, start, end) VALUES (17, 125, 3, 7, '2023-05-15 10:06:37', '2023-08-08 15:32:18');
 INSERT INTO db.production (id, order_id, technology_id, drug_amount, start, end) VALUES (18, 126, 15, 2, '2023-11-12 07:37:17', null);
 INSERT INTO db.production (id, order_id, technology_id, drug_amount, start, end) VALUES (19, 126, 17, 5, '2023-05-11 22:24:31', '2023-11-22 14:48:48');
-INSERT INTO db.production (id, order_id, technology_id, drug_amount, start, end) VALUES (20, 133, 23, 5, '2023-04-10 17:33:30', null);
+INSERT INTO db.production (id, order_id, technology_id, drug_amount, start, end) VALUES (20, 133, 23, 5, '2023-04-10 17:33:30', '2024-05-12 20:46:06');
+INSERT INTO db.production (id, order_id, technology_id, drug_amount, start, end) VALUES (22, 1, 2, 90, '2024-05-12 20:53:00', '2024-05-12 20:53:05');
+INSERT INTO db.production (id, order_id, technology_id, drug_amount, start, end) VALUES (75, 1, 2, 1, null, null);
+INSERT INTO db.production (id, order_id, technology_id, drug_amount, start, end) VALUES (76, 2, 2, 3, null, null);
+INSERT INTO db.production (id, order_id, technology_id, drug_amount, start, end) VALUES (77, 5, 13, 2, null, null);

@@ -1,4 +1,4 @@
-INSERT INTO db.customers (id, full_name, phone_number, address) VALUES (1, 'Вакулин Василий Семёнович', '+7-(999)-898-31-90', 'Липецк, ул. Артюхиной, д. 1006');
+INSERT INTO db.customers (id, full_name, phone_number, address) VALUES (1, 'Вакулин Василий Семёнович', '+7-(999)-898-31-12', 'Липецк, ул. Артюхиной, д. 1006');
 INSERT INTO db.customers (id, full_name, phone_number, address) VALUES (2, 'Фурманов Тит Георгиевич', '+7-(966)-899-58-30', 'Липецк, ул. Молодежная, д. 806');
 INSERT INTO db.customers (id, full_name, phone_number, address) VALUES (3, 'Астапова Сати Трофимовна', '+7-(938)-377-46-79', 'Липецк, ул. Украинская, д. 1156');
 INSERT INTO db.customers (id, full_name, phone_number, address) VALUES (4, 'Босова Лора Всеволодовна', '+7-(999)-513-81-04', 'Липецк, ул. Серпов, д. 154');

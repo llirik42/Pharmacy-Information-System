@@ -7,4 +7,4 @@ INSERT INTO db.suppliers (id, name, phone_number) VALUES (6, 'ФК «Пульс�
 INSERT INTO db.suppliers (id, name, phone_number) VALUES (7, 'АФК «Система»', '+7-(966)-938-35-61');
 INSERT INTO db.suppliers (id, name, phone_number) VALUES (8, '«Макдоналдс»', '+7-(911)-202-49-34');
 INSERT INTO db.suppliers (id, name, phone_number) VALUES (9, 'ГК «Эфко»', '+7-(965)-038-10-79');
-INSERT INTO db.suppliers (id, name, phone_number) VALUES (10, '«Метро кэш энд керри»', '+7-(909)-922-14-32');
+INSERT INTO db.suppliers (id, name, phone_number) VALUES (10, '«Метро кэш энд керри»', '+7-(911)-202-49-37');
