@@ -2,16 +2,16 @@ create definer = llirik42@`%` trigger check_valid_customer_phone_number_insert
     before insert
     on customers
     for each row
-BEGIN
-    call check_phone_number(NEW.phone_number);
+begin
+    call check_phone_number(new.phone_number);
 end;
 
 create definer = llirik42@`%` trigger check_valid_customer_phone_number_update
     before update
     on customers
     for each row
-BEGIN
-    call check_phone_number(NEW.phone_number);
+begin
+    call check_phone_number(new.phone_number);
 end;
 
 create table if not exists doctors
@@ -35,8 +35,8 @@ create definer = llirik42@`%` trigger check_no_techs_for_not_cookable
     before update
     on drug_types
     for each row
-BEGIN
-    call check_no_technologies_for_drug_type(NEW.id);
+begin
+    call check_no_technologies_for_drug_type(new.id);
 end;
 
 create table if not exists drug_types_administration_routes
@@ -53,16 +53,16 @@ create definer = llirik42@`%` trigger drug_types_administration_routes_trigger_d
     before delete
     on drug_types_administration_routes
     for each row
-BEGIN
-    call check_no_drugs_with_type_and_route_in_prescription(OLD.type_id, OLD.route_id);
+begin
+    call check_no_drugs_with_type_and_route_in_prescription(old.type_id, old.route_id);
 end;
 
 create definer = llirik42@`%` trigger drug_types_administration_routes_trigger_update
     before update
     on drug_types_administration_routes
     for each row
-BEGIN
-    call check_no_drugs_with_type_and_route_in_prescription(NEW.type_id, NEW.route_id);
+begin
+    call check_no_drugs_with_type_and_route_in_prescription(new.type_id, new.route_id);
 end;
 
 create table if not exists drugs
@@ -120,16 +120,16 @@ create definer = llirik42@`%` trigger patients_age_insert
     before insert
     on patients
     for each row
-BEGIN
-    call check_date_in_past(NEW.birthday);
+begin
+    call check_date_in_past(new.birthday);
 end;
 
 create definer = llirik42@`%` trigger patients_age_update
     before update
     on patients
     for each row
-BEGIN
-    call check_date_in_past(NEW.birthday);
+begin
+    call check_date_in_past(new.birthday);
 end;
 
 create table if not exists pills
@@ -187,16 +187,16 @@ create definer = llirik42@`%` trigger check_order_insert
     before insert
     on orders
     for each row
-BEGIN
-    call check_order(NEW.id);
+begin
+    call check_order(new.id);
 end;
 
 create definer = llirik42@`%` trigger check_order_update
     before update
     on orders
     for each row
-BEGIN
-    call check_order(NEW.id);
+begin
+    call check_order(new.id);
 end;
 
 create table if not exists orders_waiting_drug_supplies
@@ -216,16 +216,16 @@ create definer = llirik42@`%` trigger check_orders_waiting_supply_insert
     before insert
     on orders_waiting_drug_supplies
     for each row
-BEGIN
-    call check_order_requires_drug(NEW.order_id, NEW.drug_id);
+begin
+    call check_order_requires_drug(new.order_id, new.drug_id);
 end;
 
 create definer = llirik42@`%` trigger check_orders_waiting_supply_update
     before update
     on orders_waiting_drug_supplies
     for each row
-BEGIN
-    call check_order_requires_drug(NEW.order_id, NEW.drug_id);
+begin
+    call check_order_requires_drug(new.order_id, new.drug_id);
 end;
 
 create table if not exists prescriptions_content
@@ -248,16 +248,16 @@ create definer = llirik42@`%` trigger check_prescriptions_content_insert
     before insert
     on prescriptions_content
     for each row
-BEGIN
-    call check_prescription_drug(NEW.drug_id, NEW.administration_route_id);
+begin
+    call check_prescription_drug(new.drug_id, new.administration_route_id);
 end;
 
 create definer = llirik42@`%` trigger check_prescriptions_content_update
     before update
     on prescriptions_content
     for each row
-BEGIN
-    call check_prescription_drug(NEW.drug_id, NEW.administration_route_id);
+begin
+    call check_prescription_drug(new.drug_id, new.administration_route_id);
 end;
 
 create table if not exists salves
@@ -310,18 +310,18 @@ create definer = llirik42@`%` trigger remove_reserved_drug_from_storage
     before insert
     on reserved_drugs
     for each row
-BEGIN
+begin
     select storage_items.available_amount into @available_amount
     from storage_items
-    where storage_items.id = NEW.storage_item_id;
+    where storage_items.id = new.storage_item_id;
 
-    if (@available_amount < NEW.drug_amount) THEN
-        call raise_error('Cannot reserve drugs');
+    if (@available_amount < new.drug_amount) then
+        call raise_error('cannot reserve drugs');
     end if;
 
     update storage_items
-    set available_amount = available_amount - NEW.drug_amount
-    where storage_items.id = NEW.storage_item_id;
+    set available_amount = available_amount - new.drug_amount
+    where storage_items.id = new.storage_item_id;
 end;
 
 create table if not exists suppliers
@@ -336,16 +336,16 @@ create definer = llirik42@`%` trigger check_valid_supplier_phone_number_insert
     before insert
     on suppliers
     for each row
-BEGIN
-    call check_phone_number(NEW.phone_number);
+begin
+    call check_phone_number(new.phone_number);
 end;
 
 create definer = llirik42@`%` trigger check_valid_supplier_phone_number_update
     before update
     on suppliers
     for each row
-BEGIN
-    call check_phone_number(NEW.phone_number);
+begin
+    call check_phone_number(new.phone_number);
 end;
 
 create table if not exists supplies
@@ -401,11 +401,11 @@ create definer = llirik42@`%` trigger add_produced_drug
     after update
     on production
     for each row
-BEGIN
-    if (NEW.end is not null) THEN
-        # If everything is OK, create record in storage
-        select drug_id into @drug_id from technologies where technologies.id = NEW.technology_id;
-        INSERT INTO storage_items (drug_id, available_amount, original_amount, receipt_datetime) VALUES (@drug_id, NEW.drug_amount, NEW.drug_amount, now());
+begin
+    if (new.end is not null) then
+        # if everything is ok, create record in storage
+        select drug_id into @drug_id from technologies where technologies.id = new.technology_id;
+        insert into storage_items (drug_id, available_amount, original_amount, receipt_datetime) values (@drug_id, new.drug_amount, new.drug_amount, now());
     end if;
 end;
 
@@ -413,104 +413,104 @@ create definer = llirik42@`%` trigger check_production_insert
     before insert
     on production
     for each row
-BEGIN
-    call check_production(NEW.id, NEW.start, NEW.end);
-    call check_order_waiting_production(NEW.order_id, NEW.id);
+begin
+    call check_production(new.id, new.start, new.end);
+    call check_order_waiting_production(new.order_id, new.id);
 end;
 
 create definer = llirik42@`%` trigger check_production_update
     before update
     on production
     for each row
-BEGIN
-    call check_production(NEW.id, NEW.start, NEW.end);
-    call check_order_waiting_production(NEW.order_id, NEW.id);
+begin
+    call check_production(new.id, new.start, new.end);
+    call check_order_waiting_production(new.order_id, new.id);
 end;
 
 create definer = llirik42@`%` trigger remove_production_component_from_storage
     after insert
     on production
     for each row
-BEGIN
-    DECLARE done INT DEFAULT FALSE;
-    DECLARE required_component_amount INT DEFAULT 0;
-    DECLARE component_amount INT DEFAULT 0;
-    DECLARE component_id INT DEFAULT 0;
-    DECLARE item_id INT DEFAULT 0;
-    DECLARE available_item_drug_amount INT DEFAULT 0;
-    DECLARE storage_drug_id INT DEFAULT 0;
+begin
+    declare done int default false;
+    declare required_component_amount int default 0;
+    declare component_amount int default 0;
+    declare component_id int default 0;
+    declare item_id int default 0;
+    declare available_item_drug_amount int default 0;
+    declare storage_drug_id int default 0;
 
-    DECLARE cur CURSOR FOR
+    declare cur cursor for
         select technology_components.component_id, technology_components.component_amount
         from technology_components
-        where technology_components.technology_id = NEW.technology_id;
+        where technology_components.technology_id = new.technology_id;
 
-    DECLARE storage_cur CURSOR FOR
+    declare storage_cur cursor for
         select storage_items.id, storage_items.available_amount, storage_items.drug_id
         from storage_items;
 
-    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+    declare continue handler for not found set done = true;
 
-    OPEN cur;
+    open cur;
 
-    # Check whether there are all available components
-    read_loop: LOOP
-        FETCH cur INTO component_id, component_amount;
+    # check whether there are all available components
+    read_loop: loop
+        fetch cur into component_id, component_amount;
 
-        IF done THEN
-            LEAVE read_loop;
-        END IF;
-
-        set required_component_amount = component_amount * NEW.drug_amount;
-
-        if (select sum(available_amount) from storage_items where drug_id = component_id) < required_component_amount THEN
-            call raise_error('Not enough components in storage');
+        if done then
+            leave read_loop;
         end if;
-    END LOOP;
 
-    CLOSE cur;
+        set required_component_amount = component_amount * new.drug_amount;
 
-    # Reopen cursor to actually remove from storage
-    OPEN cur;
-    SET done = false;
+        if (select sum(available_amount) from storage_items where drug_id = component_id) < required_component_amount then
+            call raise_error('not enough components in storage');
+        end if;
+    end loop;
 
-    read_loop: LOOP
-        FETCH cur INTO component_id, component_amount;
+    close cur;
 
-        IF done THEN
-            LEAVE read_loop;
-        END IF;
+    # reopen cursor to actually remove from storage
+    open cur;
+    set done = false;
 
-        set required_component_amount = component_amount * NEW.drug_amount;
+    read_loop: loop
+        fetch cur into component_id, component_amount;
 
-        # Remove drug from storage items
+        if done then
+            leave read_loop;
+        end if;
+
+        set required_component_amount = component_amount * new.drug_amount;
+
+        # remove drug from storage items
         open storage_cur;
-        read_storage_loop: LOOP
-            FETCH storage_cur INTO item_id, available_item_drug_amount, storage_drug_id;
+        read_storage_loop: loop
+            fetch storage_cur into item_id, available_item_drug_amount, storage_drug_id;
 
-            IF done THEN
-                LEAVE read_storage_loop;
-            END IF;
-
-            if required_component_amount >= available_item_drug_amount and storage_drug_id = component_id THEN
-                UPDATE storage_items
-                SET available_amount = 0
-                WHERE storage_items.id = item_id;
-                SET required_component_amount = required_component_amount - available_item_drug_amount;
+            if done then
+                leave read_storage_loop;
             end if;
 
-            if required_component_amount < available_item_drug_amount and storage_drug_id = component_id THEN
-                UPDATE storage_items
-                SET available_amount = available_amount - required_component_amount
-                WHERE storage_items.id = item_id;
-                LEAVE read_storage_loop;
+            if required_component_amount >= available_item_drug_amount and storage_drug_id = component_id then
+                update storage_items
+                set available_amount = 0
+                where storage_items.id = item_id;
+                set required_component_amount = required_component_amount - available_item_drug_amount;
             end if;
-        END LOOP;
+
+            if required_component_amount < available_item_drug_amount and storage_drug_id = component_id then
+                update storage_items
+                set available_amount = available_amount - required_component_amount
+                where storage_items.id = item_id;
+                leave read_storage_loop;
+            end if;
+        end loop;
         close storage_cur;
 
-        # Reset done after using it in nested cursor
-        SET done = false;
-    END LOOP;
+        # reset done after using it in nested cursor
+        set done = false;
+    end loop;
 end;
 
 create table if not exists production_lab_workers
@@ -527,34 +527,34 @@ create definer = llirik42@`%` trigger check_production_lab_workers_delete
     before delete
     on production_lab_workers
     for each row
-BEGIN
-        select start into @production_start from production where id = OLD.production_id;
-        call check_production_lab_workers(OLD.production_id, @production_start);
+begin
+        select start into @production_start from production where id = old.production_id;
+        call check_production_lab_workers(old.production_id, @production_start);
 end;
 
 create definer = llirik42@`%` trigger check_production_lab_workers_update
     before update
     on production_lab_workers
     for each row
-BEGIN
-        select start into @production_start from production where id = NEW.production_id;
-        call check_production_lab_workers(NEW.production_id, @production_start);
+begin
+        select start into @production_start from production where id = new.production_id;
+        call check_production_lab_workers(new.production_id, @production_start);
 end;
 
 create definer = llirik42@`%` trigger check_drug_is_cookable_insert
     before insert
     on technologies
     for each row
-BEGIN
-    call check_drug_is_cookable(NEW.drug_id);
+begin
+    call check_drug_is_cookable(new.drug_id);
 end;
 
 create definer = llirik42@`%` trigger check_drug_is_cookable_update
     before update
     on technologies
     for each row
-BEGIN
-    call check_drug_is_cookable(NEW.drug_id);
+begin
+    call check_drug_is_cookable(new.drug_id);
 end;
 
 create table if not exists technology_components
@@ -581,48 +581,48 @@ create table if not exists tinctures
 );
 
 create
-    definer = llirik42@`%` procedure check_date_in_past(IN birthday datetime)
-BEGIN
-    if (birthday > now()) THEN
-        call raise_error('Invalid birthday');
+    definer = llirik42@`%` procedure check_date_in_past(in birthday datetime)
+begin
+    if (birthday > now()) then
+        call raise_error('invalid birthday');
     end if;
-END;
+end;
 
 create
-    definer = llirik42@`%` procedure check_drug_is_cookable(IN drug_id int)
-BEGIN
+    definer = llirik42@`%` procedure check_drug_is_cookable(in drug_id int)
+begin
     select dt.cookable into @is_cookable
         from drugs join db.drug_types dt on drugs.type_id = dt.id
         where drugs.id = drug_id;
 
-    if (not @is_cookable) THEN
-        call raise_error('Drug is not cookable');
+    if (not @is_cookable) then
+        call raise_error('drug is not cookable');
     end if;
-END;
+end;
 
 create
-    definer = llirik42@`%` procedure check_no_drugs_with_type_and_route_in_prescription(IN drug_type_id int, IN route_id int)
-BEGIN
+    definer = llirik42@`%` procedure check_no_drugs_with_type_and_route_in_prescription(in drug_type_id int, in route_id int)
+begin
     if (select count(*)
         from prescriptions_content join drugs on drugs.type_id = drug_type_id
-        where prescriptions_content.administration_route_id = route_id) > 0 THEN
-            call raise_error('There are prescriptions with drug type and administration route');
+        where prescriptions_content.administration_route_id = route_id) > 0 then
+            call raise_error('there are prescriptions with drug type and administration route');
     end if;
-END;
+end;
 
 create
-    definer = llirik42@`%` procedure check_no_technologies_for_drug_type(IN drug_type_id int)
-BEGIN
+    definer = llirik42@`%` procedure check_no_technologies_for_drug_type(in drug_type_id int)
+begin
     if (select count(*)
         from drugs join technologies on drugs.id = technologies.drug_id
-        where type_id = drug_type_id) > 0 THEN
-            call raise_error('There are cooking-technologies for drugs with this drug-type');
+        where type_id = drug_type_id) > 0 then
+            call raise_error('there are cooking-technologies for drugs with this drug-type');
     end if;
-END;
+end;
 
 create
-    definer = llirik42@`%` procedure check_order(IN order_id int)
-BEGIN
+    definer = llirik42@`%` procedure check_order(in order_id int)
+begin
     select
         prescription_id,
         registration_datetime,
@@ -638,90 +638,90 @@ BEGIN
     from prescriptions
     where prescriptions.id = @prescription_id;
 
-    if (@obtaining_datetime is not null and not @paid) THEN
-        call raise_error('Order cannot be obtained, but not paid');
+    if (@obtaining_datetime is not null and not @paid) then
+        call raise_error('order cannot be obtained, but not paid');
     end if;
 
-    if (@registration_datetime > @appointed_datetime) THEN
-        call raise_error('Order registration datetime cannot be greater that appointed datetime');
+    if (@registration_datetime > @appointed_datetime) then
+        call raise_error('order registration datetime cannot be greater that appointed datetime');
     end if;
 
-    if (@obtaining_datetime is not null and @appointed_datetime is null) THEN
-        call raise_error('Order cannot be obtained without appointing date');
+    if (@obtaining_datetime is not null and @appointed_datetime is null) then
+        call raise_error('order cannot be obtained without appointing date');
     end if;
 
-    if (@registration_datetime < @prescription_date) THEN
-        call raise_error('Invalid prescription date');
+    if (@registration_datetime < @prescription_date) then
+        call raise_error('invalid prescription date');
     end if;
-END;
+end;
 
 create
-    definer = llirik42@`%` procedure check_order_requires_drug(IN order_id int, IN drug_id int)
-BEGIN
-    if not EXISTS(select *
+    definer = llirik42@`%` procedure check_order_requires_drug(in order_id int, in drug_id int)
+begin
+    if not exists(select *
     from orders
         join prescriptions on orders.prescription_id = prescriptions.id
         join prescriptions_content pc on prescriptions.id = pc.prescription_id and pc.drug_id = drug_id
-    where orders.id = order_id) THEN
-        call raise_error('The order does not require the drug');
+    where orders.id = order_id) then
+        call raise_error('the order does not require the drug');
     end if;
-END;
+end;
 
 create
-    definer = llirik42@`%` procedure check_order_waiting_production(IN order_id int, IN production_id int)
-BEGIN
+    definer = llirik42@`%` procedure check_order_waiting_production(in order_id int, in production_id int)
+begin
     select technologies.drug_id into @drug_id
     from production
         join technologies on production.technology_id = technologies.id
     where production.id = production_id;
 
     call check_order_requires_drug(order_id, @drug_id);
-END;
+end;
 
 create
-    definer = llirik42@`%` procedure check_phone_number(IN phone_number text)
-BEGIN
-    if (not (regexp_like(phone_number, '^\\+7-\\(9\\d\\d\\)-\\d\\d\\d-\\d\\d-\\d\\d$'))) THEN
-        call raise_error('Invalid phone number');
+    definer = llirik42@`%` procedure check_phone_number(in phone_number text)
+begin
+    if (not (regexp_like(phone_number, '^\\+7-\\(9\\d\\d\\)-\\d\\d\\d-\\d\\d-\\d\\d$'))) then
+        call raise_error('invalid phone number');
     end if;
-END;
+end;
 
 create
-    definer = llirik42@`%` procedure check_prescription_drug(IN drug_id int, IN administration_route_id int)
-BEGIN
+    definer = llirik42@`%` procedure check_prescription_drug(in drug_id int, in administration_route_id int)
+begin
     if (select count(*)
         from drugs join db.drug_types_administration_routes dtar on drugs.type_id = dtar.type_id
-        where drug_id = drugs.id and dtar.route_id = administration_route_id) = 0 THEN
-            call raise_error('Invalid administration route for drug');
+        where drug_id = drugs.id and dtar.route_id = administration_route_id) = 0 then
+            call raise_error('invalid administration route for drug');
     end if;
-END;
+end;
 
 create
-    definer = llirik42@`%` procedure check_production(IN id int, IN start datetime, IN end datetime)
-BEGIN
+    definer = llirik42@`%` procedure check_production(in id int, in start datetime, in end datetime)
+begin
     call check_production_start_end(start, end);
     call check_production_lab_workers(id, start);
-END;
+end;
 
 create
-    definer = llirik42@`%` procedure check_production_lab_workers(IN id int, IN start datetime)
-BEGIN
-    IF (select count(*) from production_lab_workers where production_lab_workers.production_id = id) = 0
-            AND start is not NULL THEN
-        call raise_error('Production must have at least one lab worker');
-    END IF;
-END;
+    definer = llirik42@`%` procedure check_production_lab_workers(in id int, in start datetime)
+begin
+    if (select count(*) from production_lab_workers where production_lab_workers.production_id = id) = 0
+            and start is not null then
+        call raise_error('production must have at least one lab worker');
+    end if;
+end;
 
 create
-    definer = llirik42@`%` procedure check_production_start_end(IN start datetime, IN end datetime)
-BEGIN
-        IF (end is not null and (start is null or start >= end)) THEN
-            call raise_error('Invalid start datetime');
-        END IF;
-END;
+    definer = llirik42@`%` procedure check_production_start_end(in start datetime, in end datetime)
+begin
+        if (end is not null and (start is null or start >= end)) then
+            call raise_error('invalid start datetime');
+        end if;
+end;
 
 create
-    definer = llirik42@`%` procedure raise_error(IN message text)
-BEGIN
-        SIGNAL SQLSTATE '50001' SET MESSAGE_TEXT = message;
-END;
+    definer = llirik42@`%` procedure raise_error(in message text)
+begin
+        signal sqlstate '50001' set message_text = message;
+end;

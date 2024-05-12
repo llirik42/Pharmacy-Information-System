@@ -123,8 +123,9 @@
 				language=SQL,
 				backgroundcolor=\color{backcolour},
 				basicstyle=\scriptsize,
-				title={SQL-скрипт для создания таблиц базы данных}
-			]{../db/scheme.sql}
+				title={SQL-скрипт для создания таблиц базы данных},
+				breaklines=true
+			]{../db/ddl.sql}
 		\subsection{Ограничения по поддержанию целостности}
 			\begin{itemize}
 				\item Любой посетитель аптеки должен иметь рабочий российский номер телефона и корректный российский адрес проживания (столбцы \dbtableref{phone\_number} и \dbtableref{address} в таблице \dbtable{customers}); 
