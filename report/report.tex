@@ -126,7 +126,7 @@
 				language=SQL,
 				backgroundcolor=\color{backcolour},
 				basicstyle=\scriptsize,
-				title={SQL-скрипт для создания таблиц базы данных},
+				caption={SQL-скрипт для создания таблиц базы данных},
 				breaklines=true
 			]{../db/DDL/schema.sql}
 		\subsection{Ограничения по поддержанию целостности}
@@ -173,14 +173,14 @@
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					title={Сведения о покупателях},
+					caption={Сведения о покупателях},
 					showstringspaces=false
 				]{../db/DML/queries/1-1.sql}
 				\lstinputlisting[
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					title={Общее число покупателей},
+					caption={Общее число покупателей},
 					showstringspaces=false
 				]{../db/DML/queries/1-2.sql}
 			\item Получить перечень и общее число покупателей, которые ждут прибытия на склад нужных им медикаментов в целом и по указанной категории медикаментов.
@@ -189,7 +189,7 @@
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
 					breaklines=true,
-					title={Перечень покупателей (в целом)},
+					caption={Перечень покупателей (в целом)},
 					showstringspaces=false
 				]{../db/DML/queries/2-1.sql}
 				\lstinputlisting[
@@ -197,7 +197,7 @@
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
 					breaklines=true,
-					title={Общее число покупателей (в целом)},
+					caption={Общее число покупателей (в целом)},
 					showstringspaces=false
 				]{../db/DML/queries/2-2.sql}
 				\lstinputlisting[
@@ -205,7 +205,7 @@
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
 					breaklines=true,
-					title={Перечень покупателей (по указанной категории)},
+					caption={Перечень покупателей (по указанной категории)},
 					showstringspaces=false
 				]{../db/DML/queries/2-3.sql}
 				\lstinputlisting[
@@ -213,7 +213,7 @@
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
 					breaklines=true,
-					title={Общее число покупателей (по указанной категории)},
+					caption={Общее число покупателей (по указанной категории)},
 					showstringspaces=false
 				]{../db/DML/queries/2-4.sql}
 			\item Получить перечень десяти наиболее часто используемых медикаментов в целом и указанной категории медикаментов.
@@ -224,7 +224,7 @@
 					showstringspaces=false,
 					breaklines=true,
 					showstringspaces=false,
-					title={В целом}
+					caption={В целом}
 				]{../db/DML/queries/3-1.sql}
 				\lstinputlisting[
 					language=SQL,
@@ -233,7 +233,7 @@
 					showstringspaces=false,
 					breaklines=true,
 					showstringspaces=false,
-					title={По указанной категории медикаментов}
+					caption={По указанной категории медикаментов}
 				]{../db/DML/queries/3-2.sql}
 			\item  Получить какой объем указанных веществ использован за указанный период.
 				\lstinputlisting[
@@ -249,28 +249,28 @@
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					title={Перечень покупателей, заказавших определённое лекарство за данный период},
+					caption={Перечень покупателей, заказавших определённое лекарство за данный период},
 					showstringspaces=false
 				]{../db/DML/queries/5-1.sql}
 				\lstinputlisting[
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					title={Общее число покупателей, заказавших определённое лекарство за данный период},
+					caption={Общее число покупателей, заказавших определённое лекарство за данный период},
 					showstringspaces=false
 				]{../db/DML/queries/5-2.sql}
 				\lstinputlisting[
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					title={Перечень покупателей, заказавших лекарство определённого типа за данный период},
+					caption={Перечень покупателей, заказавших лекарство определённого типа за данный период},
 					showstringspaces=false
 				]{../db/DML/queries/5-3.sql}
 				\lstinputlisting[
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					title={Общее число покупателей, заказавших лекарство определённого типа за данный период},
+					caption={Общее число покупателей, заказавших лекарство определённого типа за данный период},
 					showstringspaces=false
 				]{../db/DML/queries/5-4.sql}
 			\item Получить перечень и типы лекарств, достигших своей критической нормы или закончившихся.
@@ -278,14 +278,14 @@
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					title={Перечень лекарств},
+					caption={Перечень лекарств},
 					showstringspaces=false
 				]{../db/DML/queries/6-1.sql}
 				\lstinputlisting[
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					title={Типы лекарств},
+					caption={Типы лекарств},
 					showstringspaces=false
 				]{../db/DML/queries/6-2.sql}
 			\item Получить перечень лекарств с минимальным запасом на складе в целом и по указанной категории медикаментов.
@@ -293,14 +293,14 @@
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					title={В целом},
+					caption={В целом},
 					showstringspaces=false
 				]{../db/DML/queries/7-1.sql}
 				\lstinputlisting[
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					title={По указанной категории медикаментов},
+					caption={По указанной категории медикаментов},
 					showstringspaces=false
 				]{../db/DML/queries/7-2.sql}
 			\item Получить полный перечень и общее число заказов находящихся в производстве.
@@ -308,14 +308,14 @@
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					title={Полный перечень заказов},
+					caption={Полный перечень заказов},
 					showstringspaces=false
 				]{../db/DML/queries/8-1.sql}
 				\lstinputlisting[
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					title={Общее число заказов},
+					caption={Общее число заказов},
 					showstringspaces=false
 				]{../db/DML/queries/8-1.sql}
 			\item Получить полный перечень и общее число препаратов требующихся для заказов, находящихся в производстве.
@@ -324,7 +324,7 @@
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
 					breaklines=true,
-					title={Полный перечень препаратов},
+					caption={Полный перечень препаратов},
 					showstringspaces=false
 				]{../db/DML/queries/9-1.sql}
 				\lstinputlisting[
@@ -332,7 +332,7 @@
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
 					breaklines=true,
-					title={Общее число препаратов},
+					caption={Общее число препаратов},
 					showstringspaces=false
 				]{../db/DML/queries/9-2.sql}
 			\item Получить все технологии приготовления лекарств указанных типов, конкретных лекарств, лекарств, находящихся в справочнике заказов в производстве.
@@ -340,21 +340,21 @@
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					title={Конкретных лекарств},
+					caption={Конкретных лекарств},
 					showstringspaces=false
 				]{../db/DML/queries/10-1.sql}
 				\lstinputlisting[
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					title={Лекарств данного типа},
+					caption={Лекарств данного типа},
 					showstringspaces=false
 				]{../db/DML/queries/10-2.sql}
 				\lstinputlisting[
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					title={Лекарств в справочнике заказов в производстве},
+					caption={Лекарств в справочнике заказов в производстве},
 					showstringspaces=false
 				]{../db/DML/queries/10-3.sql}
 			\item Получить сведения о ценах на указанное лекарство в готовом виде, об объеме и ценах на все компоненты, требующиеся для этого лекарства.
@@ -371,7 +371,7 @@
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
 					breaklines=true,
-					title={На определённый тип лекарств},
+					caption={На определённый тип лекарств},
 					showstringspaces=false
 				]{../db/DML/queries/12-1.sql}
 				\lstinputlisting[
@@ -379,7 +379,7 @@
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
 					breaklines=true,
-					title={На конкретные медикаменты},
+					caption={На конкретные медикаменты},
 					showstringspaces=false
 				]{../db/DML/queries/12-2.sql}
 			\item Получить сведения о конкретном лекарстве (его тип, способ приготовления, названия всех компонент, цены, его количество на складе).
@@ -388,7 +388,7 @@
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
 					breaklines=true,
-					title={Сведения о конкретном лекарстве},
+					caption={Сведения о конкретном лекарстве},
 					showstringspaces=false
 				]{../db/DML/queries/13-1.sql}
 				\lstinputlisting[
@@ -396,7 +396,7 @@
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
 					breaklines=true,
-					title={Перечень технологий приготовления данного лекарства},
+					caption={Перечень технологий приготовления данного лекарства},
 					showstringspaces=false
 				]{../db/DML/queries/13-2.sql}
 		\end{enumerate}
@@ -410,7 +410,7 @@
 				backgroundcolor=\color{backcolour},
 				basicstyle=\scriptsize,
 				breaklines=true,
-				title={Бросание ошибки},
+				caption={Бросание ошибки},
 				showstringspaces=false
 			]{../db/DDL/procedures/raise_error.sql}
 			\lstinputlisting[
@@ -418,7 +418,7 @@
 				backgroundcolor=\color{backcolour},
 				basicstyle=\scriptsize,
 				breaklines=true,
-				title={Проверка, что дата не больше текущей},
+				caption={Проверка, что дата не больше текущей},
 				showstringspaces=false
 			]{../db/DDL/procedures/check_date_in_past.sql}
 			\lstinputlisting[
@@ -426,7 +426,7 @@
 				backgroundcolor=\color{backcolour},
 				basicstyle=\scriptsize,
 				breaklines=true,
-				title={Проверка, что лекарство имеет приготовляемый тип},
+				caption={Проверка, что лекарство имеет приготовляемый тип},
 				showstringspaces=false
 			]{../db/DDL/procedures/check_drug_is_cookable.sql}
 			\lstinputlisting[
@@ -434,7 +434,7 @@
 				backgroundcolor=\color{backcolour},
 				basicstyle=\scriptsize,
 				breaklines=true,
-				title={Проверка, что нет рецептов, в которых данный тип лекарства нужно применять таким-то спосособом},
+				caption={Проверка, что нет рецептов, в которых данный тип лекарства нужно применять таким-то спосособом},
 				showstringspaces=false
 			]{../db/DDL/procedures/check_no_drugs_with_type_and_route_in_prescription.sql}
 			\lstinputlisting[
@@ -442,7 +442,7 @@
 				backgroundcolor=\color{backcolour},
 				basicstyle=\scriptsize,
 				breaklines=true,
-				title={Проверка, что нет технологий, приготовляющих данных тип лекарства},
+				caption={Проверка, что нет технологий, приготовляющих данных тип лекарства},
 				showstringspaces=false
 			]{../db/DDL/procedures/check_no_technologies_for_drug_type.sql}
 			\lstinputlisting[
@@ -450,7 +450,7 @@
 				backgroundcolor=\color{backcolour},
 				basicstyle=\scriptsize,
 				breaklines=true,
-				title={Проверка корректности данных заказа},
+				caption={Проверка корректности данных заказа},
 				showstringspaces=false
 			]{../db/DDL/procedures/check_order.sql}
 			\lstinputlisting[
@@ -458,7 +458,7 @@
 				backgroundcolor=\color{backcolour},
 				basicstyle=\scriptsize,
 				breaklines=true,
-				title={Проверка, что для заказа требуется данное лекарство},
+				caption={Проверка, что для заказа требуется данное лекарство},
 				showstringspaces=false
 			]{../db/DDL/procedures/check_order_requires_drug.sql}
 			\lstinputlisting[
@@ -466,7 +466,7 @@
 				backgroundcolor=\color{backcolour},
 				basicstyle=\scriptsize,
 				breaklines=true,
-				title={Проверка, что заказ ожидает приготовление данного лекарства},
+				caption={Проверка, что заказ ожидает приготовление данного лекарства},
 				showstringspaces=false
 			]{../db/DDL/procedures/check_order_waiting_production.sql}
 			\lstinputlisting[
@@ -474,7 +474,7 @@
 				backgroundcolor=\color{backcolour},
 				basicstyle=\scriptsize,
 				breaklines=true,
-				title={Проверка, что строка имеет формат российского телефона},
+				caption={Проверка, что строка имеет формат российского телефона},
 				showstringspaces=false
 			]{../db/DDL/procedures/check_phone_number.sql}
 			\lstinputlisting[
@@ -482,7 +482,7 @@
 				backgroundcolor=\color{backcolour},
 				basicstyle=\scriptsize,
 				breaklines=true,
-				title={Проверка, что данное лекарство может быть применено данным способом},
+				caption={Проверка, что данное лекарство может быть применено данным способом},
 				showstringspaces=false
 			]{../db/DDL/procedures/check_prescription_drug.sql}
 			\lstinputlisting[
@@ -490,7 +490,7 @@
 				backgroundcolor=\color{backcolour},
 				basicstyle=\scriptsize,
 				breaklines=true,
-				title={Проверка корректности времён начала и окончания приготовления лекарства},
+				caption={Проверка корректности времён начала и окончания приготовления лекарства},
 				showstringspaces=false
 			]{../db/DDL/procedures/check_production_start_end.sql}
 			\lstinputlisting[
@@ -498,7 +498,7 @@
 				backgroundcolor=\color{backcolour},
 				basicstyle=\scriptsize,
 				breaklines=true,
-				title={Проверка, что в приготовлении лекарства участвует минимум один рабочий},
+				caption={Проверка, что в приготовлении лекарства участвует минимум один рабочий},
 				showstringspaces=false
 			]{../db/DDL/procedures/check_production_lab_workers.sql}
 			\lstinputlisting[
@@ -506,8 +506,200 @@
 				backgroundcolor=\color{backcolour},
 				basicstyle=\scriptsize,
 				breaklines=true,
-				title={Проверка корректности данных изготовления},
+				caption={Проверка корректности данных изготовления},
 				showstringspaces=false
 			]{../db/DDL/procedures/check_production.sql}
 		\subsection{Триггеры}
+			\lstinputlisting[
+				language=SQL,
+				backgroundcolor=\color{backcolour},
+				basicstyle=\scriptsize,
+				breaklines=true,
+				caption={Триггер, добавляющий на склад приготовившееся лекарство (после обновления записи таблицы \dbtableref{production})},
+				showstringspaces=false
+			]{../db/DDL/triggers/add_produced_drug.sql}
+			\lstinputlisting[
+				language=SQL,
+				backgroundcolor=\color{backcolour},
+				basicstyle=\scriptsize,
+				breaklines=true,
+				caption={Триггер, проверящий, что новая по новой технологии изготавливается приготовляемое лекарство (до вставки записи в таблицу \dbtableref{technologies})},
+				showstringspaces=false
+			]{../db/DDL/triggers/check_drug_is_cookable_insert.sql}
+			\lstinputlisting[
+				language=SQL,
+				backgroundcolor=\color{backcolour},
+				basicstyle=\scriptsize,
+				breaklines=true,
+				caption={Триггер, проверящий, что новая по новой технологии изготавливается приготовляемое лекарство (до обновления записи таблицы \dbtableref{technologies})},
+				showstringspaces=false
+			]{../db/DDL/triggers/check_drug_is_cookable_update.sql}
+			\lstinputlisting[
+				language=SQL,
+				backgroundcolor=\color{backcolour},
+				basicstyle=\scriptsize,
+				breaklines=true,
+				caption={Триггер, проверяющий, что если тип лекарства из приготовляемого становится не приготовляемым, то все технологии приготовления останутся целостными (до обновления записи таблицы \dbtableref{drug\_types})},
+				showstringspaces=false
+			]{../db/DDL/triggers/check_no_techs_for_not_cookable.sql}
+			\lstinputlisting[
+				language=SQL,
+				backgroundcolor=\color{backcolour},
+				basicstyle=\scriptsize,
+				breaklines=true,
+				caption={Триггер, проверящий целостность данных заказа (до вставки записи в таблицу \dbtableref{orders})},
+				showstringspaces=false
+			]{../db/DDL/triggers/check_order_insert.sql}
+			\lstinputlisting[
+				language=SQL,
+				backgroundcolor=\color{backcolour},
+				basicstyle=\scriptsize,
+				breaklines=true,
+				caption={Триггер, проверящий целостность данных заказа (до обновления записи таблицы \dbtableref{orders})},
+				showstringspaces=false
+			]{../db/DDL/triggers/check_order_update.sql}
+			\lstinputlisting[
+				language=SQL,
+				backgroundcolor=\color{backcolour},
+				basicstyle=\scriptsize,
+				breaklines=true,
+				caption={Триггер, проверящий, что заказ не ждёт поставки лекарств, которые для него не требуются (до вставки записи в таблицу \dbtableref{order\_waiting\_drug\_supplies})},
+				showstringspaces=false
+			]{../db/DDL/triggers/check_orders_waiting_supply_insert.sql}
+			\lstinputlisting[
+				language=SQL,
+				backgroundcolor=\color{backcolour},
+				basicstyle=\scriptsize,
+				breaklines=true,
+				caption={Триггер, проверящий, что заказ не ждёт поставки лекарств, которые для него не требуются (до обновления записи таблицы \dbtableref{order\_waiting\_drug\_supplies})},
+				showstringspaces=false
+			]{../db/DDL/triggers/check_orders_waiting_supply_update.sql}
+			\lstinputlisting[
+				language=SQL,
+				backgroundcolor=\color{backcolour},
+				basicstyle=\scriptsize,
+				breaklines=true,
+				caption={Триггер, проверящий, что способ применения лекарства в рецепте соответствует типу лекарства (до вставки записи в таблицу \dbtableref{prescriptions\_content})},
+				showstringspaces=false
+			]{../db/DDL/triggers/check_prescriptions_content_insert.sql}
+			\lstinputlisting[
+				language=SQL,
+				backgroundcolor=\color{backcolour},
+				basicstyle=\scriptsize,
+				breaklines=true,
+				caption={Триггер, проверящий, что способ применения лекарства в рецепте соответствует типу лекарства (до обновления записи таблицы \dbtableref{prescriptions\_content})},
+				showstringspaces=false
+			]{../db/DDL/triggers/check_prescriptions_content_update.sql}
+			\lstinputlisting[
+				language=SQL,
+				backgroundcolor=\color{backcolour},
+				basicstyle=\scriptsize,
+				breaklines=true,
+				caption={Триггер, проверящий целостность данных приготовления и соответствие со связанными с ним заказом (до вставки записи в таблицу \dbtableref{production})},
+				showstringspaces=false
+			]{../db/DDL/triggers/check_production_insert.sql}
+			\lstinputlisting[
+				language=SQL,
+				backgroundcolor=\color{backcolour},
+				basicstyle=\scriptsize,
+				breaklines=true,
+				caption={Триггер, проверящий целостность данных приготовления и соответствие со связанными с ним заказом (до обновления записи таблицы \dbtableref{production})},
+				showstringspaces=false
+			]{../db/DDL/triggers/check_production_update.sql}
+			\lstinputlisting[
+				language=SQL,
+				backgroundcolor=\color{backcolour},
+				basicstyle=\scriptsize,
+				breaklines=true,
+				caption={Триггер, проверящий, что в приготовлении лекарства участвует как минимум один рабочий (до удаления записи таблицы \dbtableref{production\_lab\_workers})},
+				showstringspaces=false
+			]{../db/DDL/triggers/check_production_lab_workers_delete.sql}
+			\lstinputlisting[
+				language=SQL,
+				backgroundcolor=\color{backcolour},
+				basicstyle=\scriptsize,
+				breaklines=true,
+				caption={Триггер, проверящий, что в приготовлении лекарства участвует как минимум один рабочий (до обновления записи таблицы \dbtableref{production\_lab\_workers})},
+				showstringspaces=false
+			]{../db/DDL/triggers/check_production_lab_workers_update.sql}
+			\lstinputlisting[
+				language=SQL,
+				backgroundcolor=\color{backcolour},
+				basicstyle=\scriptsize,
+				breaklines=true,
+				caption={Триггер, проверящий, что каждый клиент имеет валидный российский номер телефона (до вставки записи в таблицу \dbtableref{customers})},
+				showstringspaces=false
+			]{../db/DDL/triggers/check_valid_customer_phone_number_insert.sql}
+			\lstinputlisting[
+				language=SQL,
+				backgroundcolor=\color{backcolour},
+				basicstyle=\scriptsize,
+				breaklines=true,
+				caption={Триггер, проверящий, что каждый клиент имеет валидный российский номер телефона (до обновления записи таблицы \dbtableref{customers})},
+				showstringspaces=false
+			]{../db/DDL/triggers/check_valid_customer_phone_number_update.sql}
+			\lstinputlisting[
+				language=SQL,
+				backgroundcolor=\color{backcolour},
+				basicstyle=\scriptsize,
+				breaklines=true,
+				caption={Триггер, проверящий, что каждый поставщик имеет валидный российский номер телефона (до вставки записи в таблицу \dbtableref{suppliers})},
+				showstringspaces=false
+			]{../db/DDL/triggers/check_valid_supplier_phone_number_insert.sql}
+			\lstinputlisting[
+				language=SQL,
+				backgroundcolor=\color{backcolour},
+				basicstyle=\scriptsize,
+				breaklines=true,
+				caption={Триггер, проверящий, что каждый поставщик имеет валидный российский номер телефона (до обновления записи таблицы \dbtableref{suppliers})},
+				showstringspaces=false
+			]{../db/DDL/triggers/check_valid_supplier_phone_number_update.sql}
+			\lstinputlisting[
+				language=SQL,
+				backgroundcolor=\color{backcolour},
+				basicstyle=\scriptsize,
+				breaklines=true,
+				caption={Триггер, проверящий, что каждый больной имеет валидную дату рождения (до вставки записи в таблицу \dbtableref{patients})},
+				showstringspaces=false
+			]{../db/DDL/triggers/patients_age_insert.sql}
+			\lstinputlisting[
+				language=SQL,
+				backgroundcolor=\color{backcolour},
+				basicstyle=\scriptsize,
+				breaklines=true,
+				caption={Триггер, проверящий, что каждый больной имеет валидную дату рождения (до обновления записи таблицы \dbtableref{patients})},
+				showstringspaces=false
+			]{../db/DDL/triggers/patients_age_update.sql}
+			\lstinputlisting[
+				language=SQL,
+				backgroundcolor=\color{backcolour},
+				basicstyle=\scriptsize,
+				breaklines=true,
+				caption={Триггер, проверящий, что, в случае изменения способов применения лекарст данного типа, выписанные рецепты останутся целостными (до удаления записи таблицы \dbtableref{drug\_types\_administration\_routes})},
+				showstringspaces=false
+			]{../db/DDL/triggers/drug_types_administration_routes_trigger_delete.sql}
+			\lstinputlisting[
+				language=SQL,
+				backgroundcolor=\color{backcolour},
+				basicstyle=\scriptsize,
+				breaklines=true,
+				caption={Триггер, проверящий, что, в случае изменения способов применения лекарст данного типа, выписанные рецепты останутся целостными (до обновления записи таблицы \dbtableref{drug\_types\_administration\_routes})},
+				showstringspaces=false
+			]{../db/DDL/triggers/drug_types_administration_routes_trigger_update.sql}
+			\lstinputlisting[
+				language=SQL,
+				backgroundcolor=\color{backcolour},
+				basicstyle=\scriptsize,
+				breaklines=true,
+				caption={Триггер, проверяющий, что на складе достаточно компонент для приготовления лекарства и удаляющий эти компоненты со склада, если достаточно (до встави записи в таблицу \dbtableref{production})},
+				showstringspaces=false
+			]{../db/DDL/triggers/remove_production_components_from_storage.sql}
+			\lstinputlisting[
+				language=SQL,
+				backgroundcolor=\color{backcolour},
+				basicstyle=\scriptsize,
+				breaklines=true,
+				caption={Триггер, проверяющий, что на складе достаточно лекарств для резервирования и удаляющий их со склада, если достаточно (до встави записи в таблицу \dbtableref{reserved\_drugs})},
+				showstringspaces=false
+			]{../db/DDL/triggers/remove_reserved_drug_from_storage.sql}
 \end{document}
