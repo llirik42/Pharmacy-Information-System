@@ -15,10 +15,8 @@ with
     )
 
 select distinct
-    type_id,
-    drug_types.name
+    type_id
 from critical_amount_drugs
     join drugs on critical_amount_drugs.drug_id = drugs.id
-    join db.drug_types on drugs.type_id = drug_types.id
 order by
     type_id

@@ -1,6 +1,6 @@
 prepare stmt from '
     select
-        technologies.*
+        technologies.id as technology_id
     from technologies
         join drugs on technologies.drug_id = drugs.id
     where drugs.type_id = ?

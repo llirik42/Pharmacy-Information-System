@@ -1,9 +1,6 @@
 prepare stmt from '
     select
         technologies.id as technology_id,
-        technologies.description as technology_description,
-        technologies.cooking_time,
-        technologies.amount as output_amount,
         sum(components.cost * component_amount) as total_components_cost
     from drugs
         join technologies on drugs.id = technologies.drug_id

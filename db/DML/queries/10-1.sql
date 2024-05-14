@@ -1,9 +1,6 @@
 prepare stmt from '
     select
-        id as technology_id,
-        cooking_time,
-        amount,
-        description
+        id as technology_id
     from technologies
     where drug_id = ?
 ';

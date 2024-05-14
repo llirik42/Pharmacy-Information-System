@@ -38,7 +38,7 @@ prepare stmt from '
 
             group by drug_id)
 
-    select *
+    select drug_id, drug_amount
     from used_drugs
     order by drug_amount desc
     limit ?;

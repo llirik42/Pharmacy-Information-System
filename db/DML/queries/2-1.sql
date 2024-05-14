@@ -1,6 +1,5 @@
 select distinct
-    customers.id,
-    customers.full_name
+    orders.customer_id
 from orders
     join orders_waiting_drug_supplies on orders.id = orders_waiting_drug_supplies.order_id
-    join customers on orders.customer_id = customers.id
+where customer_id is not null

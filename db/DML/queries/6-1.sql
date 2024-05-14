@@ -14,5 +14,6 @@ with
             drug_amount <= critical_amount
     )
 
-select *
+select drug_id, drug_amount
 from critical_amount_drugs
+order by drug_amount
