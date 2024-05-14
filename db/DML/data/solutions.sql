@@ -1,1 +1,1 @@
-INSERT INTO db.solutions (drug_id, dosage) VALUES (6, 88);
+INSERT INTO solutions (drug_id, dosage) VALUES (6, 88);
