@@ -5,6 +5,21 @@ create table if not exists administration_routes
     description text not null
 );
 
+create table if not exists drug_types
+(
+    id       int auto_increment
+        primary key,
+    name     text       not null,
+    cookable tinyint(1) not null
+);
+
+create table if not exists mixture_types
+(
+    id   int auto_increment
+        primary key,
+    name text not null
+);
+
 create table if not exists customers
 (
     id           int auto_increment
@@ -23,22 +38,27 @@ create table if not exists doctors
         unique (full_name)
 );
 
-create table if not exists drug_types
+create table if not exists lab_workers
 (
-    id       int auto_increment
+    id        int auto_increment
         primary key,
-    name     text       not null,
-    cookable tinyint(1) not null
+    full_name text not null
 );
 
-create table if not exists drug_types_administration_routes
+create table if not exists patients
 (
-    type_id  int not null,
-    route_id int not null,
-    constraint drug_types_administration_routes_administration_routes_id_fk
-        foreign key (route_id) references administration_routes (id),
-    constraint drug_types_administration_routes_drug_types_id_fk
-        foreign key (type_id) references drug_types (id)
+    id        int auto_increment
+        primary key,
+    full_name text not null,
+    birthday  date not null
+);
+
+create table if not exists suppliers
+(
+    id           int auto_increment
+        primary key,
+    name         text not null,
+    phone_number text not null
 );
 
 create table if not exists drugs
@@ -58,20 +78,6 @@ create table if not exists drugs
     check (`critical_amount` >= 0)
 );
 
-create table if not exists lab_workers
-(
-    id        int auto_increment
-        primary key,
-    full_name text not null
-);
-
-create table if not exists mixture_types
-(
-    id   int auto_increment
-        primary key,
-    name text not null
-);
-
 create table if not exists mixtures
 (
     drug_id         int auto_increment
@@ -84,12 +90,13 @@ create table if not exists mixtures
         foreign key (mixture_type_id) references mixture_types (id)
 );
 
-create table if not exists patients
+create table if not exists tinctures
 (
-    id        int auto_increment
+    drug_id  int  not null
         primary key,
-    full_name text not null,
-    birthday  date not null
+    material text not null,
+    constraint tinctures_drugs_id_fk
+        foreign key (drug_id) references drugs (id)
 );
 
 create table if not exists pills
@@ -111,6 +118,35 @@ create table if not exists powders
     composite tinyint(1) not null,
     constraint powders_drugs_id_fk
         foreign key (drug_id) references drugs (id)
+);
+
+create table if not exists salves
+(
+    drug_id          int  not null
+        primary key,
+    active_substance text not null,
+    constraint salves_drugs_id_fk
+        foreign key (drug_id) references drugs (id)
+);
+
+create table if not exists solutions
+(
+    drug_id int not null
+        primary key,
+    dosage  int not null,
+    constraint solutions_drugs_id_fk
+        foreign key (drug_id) references drugs (id),
+    check ((0 <= `dosage`) and (`dosage` <= 100))
+);
+
+create table if not exists drug_types_administration_routes
+(
+    type_id  int not null,
+    route_id int not null,
+    constraint drug_types_administration_routes_administration_routes_id_fk
+        foreign key (route_id) references administration_routes (id),
+    constraint drug_types_administration_routes_drug_types_id_fk
+        foreign key (type_id) references drug_types (id)
 );
 
 create table if not exists prescriptions
@@ -143,54 +179,6 @@ create table if not exists orders
         foreign key (prescription_id) references prescriptions (id)
 );
 
-create table if not exists orders_waiting_drug_supplies
-(
-    order_id int not null,
-    drug_id  int not null,
-    amount   int not null,
-    primary key (drug_id, order_id),
-    constraint orders_waiting_supplies_list_drugs_id_fk
-        foreign key (drug_id) references drugs (id),
-    constraint orders_waiting_supplies_list_orders_id_fk
-        foreign key (order_id) references orders (id),
-    check (`amount` > 0)
-);
-
-create table if not exists prescriptions_content
-(
-    prescription_id         int not null,
-    drug_id                 int not null,
-    amount                  int not null,
-    administration_route_id int not null,
-    primary key (prescription_id, drug_id, administration_route_id),
-    constraint prescriptions_content_administration_routes_id_fk
-        foreign key (administration_route_id) references administration_routes (id),
-    constraint prescriptions_content_drugs_id_fk
-        foreign key (drug_id) references drugs (id),
-    constraint prescriptions_content_prescriptions_id_fk
-        foreign key (prescription_id) references prescriptions (id),
-    check (`amount` > 0)
-);
-
-create table if not exists salves
-(
-    drug_id          int  not null
-        primary key,
-    active_substance text not null,
-    constraint salves_drugs_id_fk
-        foreign key (drug_id) references drugs (id)
-);
-
-create table if not exists solutions
-(
-    drug_id int not null
-        primary key,
-    dosage  int not null,
-    constraint solutions_drugs_id_fk
-        foreign key (drug_id) references drugs (id),
-    check ((0 <= `dosage`) and (`dosage` <= 100))
-);
-
 create table if not exists storage_items
 (
     id               int auto_increment
@@ -203,27 +191,6 @@ create table if not exists storage_items
         foreign key (drug_id) references drugs (id),
     check (`original_amount` > 0),
     check (`available_amount` >= 0)
-);
-
-create table if not exists reserved_drugs
-(
-    order_id        int not null,
-    storage_item_id int not null,
-    drug_amount     int not null,
-    primary key (order_id, storage_item_id),
-    constraint reserved_drugs_orders_id_fk
-        foreign key (order_id) references orders (id),
-    constraint reserved_drugs_storage_items_id_fk
-        foreign key (storage_item_id) references storage_items (id),
-    check (`drug_amount` > 0)
-);
-
-create table if not exists suppliers
-(
-    id           int auto_increment
-        primary key,
-    name         text not null,
-    phone_number text not null
 );
 
 create table if not exists supplies
@@ -257,6 +224,23 @@ create table if not exists technologies
     check (`amount` > 0)
 );
 
+
+create table if not exists prescriptions_content
+(
+    prescription_id         int not null,
+    drug_id                 int not null,
+    amount                  int not null,
+    administration_route_id int not null,
+    primary key (prescription_id, drug_id, administration_route_id),
+    constraint prescriptions_content_administration_routes_id_fk
+        foreign key (administration_route_id) references administration_routes (id),
+    constraint prescriptions_content_drugs_id_fk
+        foreign key (drug_id) references drugs (id),
+    constraint prescriptions_content_prescriptions_id_fk
+        foreign key (prescription_id) references prescriptions (id),
+    check (`amount` > 0)
+);
+
 create table if not exists production
 (
     id            int auto_increment
@@ -273,6 +257,32 @@ create table if not exists production
     constraint drug
         check (`drug_amount` > 0),
     check (((`start` is null) and (`end` is null)) or (`end` is null) or (`end` >= `start`))
+);
+
+create table if not exists orders_waiting_drug_supplies
+(
+    order_id int not null,
+    drug_id  int not null,
+    amount   int not null,
+    primary key (drug_id, order_id),
+    constraint orders_waiting_supplies_list_drugs_id_fk
+        foreign key (drug_id) references drugs (id),
+    constraint orders_waiting_supplies_list_orders_id_fk
+        foreign key (order_id) references orders (id),
+    check (`amount` > 0)
+);
+
+create table if not exists reserved_drugs
+(
+    order_id        int not null,
+    storage_item_id int not null,
+    drug_amount     int not null,
+    primary key (order_id, storage_item_id),
+    constraint reserved_drugs_orders_id_fk
+        foreign key (order_id) references orders (id),
+    constraint reserved_drugs_storage_items_id_fk
+        foreign key (storage_item_id) references storage_items (id),
+    check (`drug_amount` > 0)
 );
 
 create table if not exists production_lab_workers
@@ -297,13 +307,4 @@ create table if not exists technology_components
         foreign key (technology_id) references technologies (id),
     constraint positive_component_amount_check
         check (`component_amount` > 0)
-);
-
-create table if not exists tinctures
-(
-    drug_id  int  not null
-        primary key,
-    material text not null,
-    constraint tinctures_drugs_id_fk
-        foreign key (drug_id) references drugs (id)
 );
