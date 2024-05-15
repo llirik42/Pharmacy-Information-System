@@ -1,5 +1,4 @@
-create
-    definer = llirik42@`%` procedure check_order(in order_id int)
+create procedure check_order(in order_id int)
 begin
     select
         prescription_id,

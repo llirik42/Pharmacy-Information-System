@@ -1,4 +1,4 @@
-create definer = llirik42@`%` trigger check_production_insert
+create trigger check_production_insert
     before insert
     on production
     for each row

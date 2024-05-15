@@ -1,4 +1,4 @@
-create definer = llirik42@`%` trigger check_production_lab_workers_update
+create trigger check_production_lab_workers_update
     before update
     on production_lab_workers
     for each row

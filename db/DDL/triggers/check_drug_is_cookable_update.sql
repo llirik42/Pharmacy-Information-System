@@ -1,4 +1,4 @@
-create definer = llirik42@`%` trigger check_drug_is_cookable_update
+create trigger check_drug_is_cookable_update
     before update
     on technologies
     for each row

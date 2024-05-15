@@ -1,4 +1,4 @@
-create definer = llirik42@`%` trigger patients_age_insert
+create trigger patients_age_insert
     before insert
     on patients
     for each row

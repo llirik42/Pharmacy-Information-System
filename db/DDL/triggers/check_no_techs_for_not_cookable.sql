@@ -1,4 +1,4 @@
-create definer = llirik42@`%` trigger check_no_techs_for_not_cookable
+create trigger check_no_techs_for_not_cookable
     before update
     on drug_types
     for each row

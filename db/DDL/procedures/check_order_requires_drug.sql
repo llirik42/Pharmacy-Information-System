@@ -1,5 +1,4 @@
-create
-    definer = llirik42@`%` procedure check_order_requires_drug(in order_id int, in drug_id int)
+create procedure check_order_requires_drug(in order_id int, in drug_id int)
 begin
     if not exists(select *
     from orders

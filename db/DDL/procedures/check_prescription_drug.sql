@@ -1,5 +1,4 @@
-create
-    definer = llirik42@`%` procedure check_prescription_drug(in drug_id int, in administration_route_id int)
+create procedure check_prescription_drug(in drug_id int, in administration_route_id int)
 begin
     if (select count(*)
         from drugs join drug_types_administration_routes dtar on drugs.type_id = dtar.type_id

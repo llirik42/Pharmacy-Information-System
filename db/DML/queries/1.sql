@@ -1,5 +1,4 @@
 select distinct
-    customer_id,
     id as order_id
 from orders
 where

@@ -1,4 +1,4 @@
-create definer = llirik42@`%` trigger add_produced_drug
+create trigger add_produced_drug
     after update
     on production
     for each row

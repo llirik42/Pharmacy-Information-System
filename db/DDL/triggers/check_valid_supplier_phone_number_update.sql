@@ -1,4 +1,4 @@
-create definer = llirik42@`%` trigger check_valid_supplier_phone_number_update
+create trigger check_valid_supplier_phone_number_update
     before update
     on suppliers
     for each row

@@ -173,7 +173,6 @@
 					language=SQL,
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
-					caption={Сведения о покупателях},
 					showstringspaces=false
 				]{../db/DML/queries/1.sql}
 			\item Получить перечень и общее число покупателей, которые ждут прибытия на склад нужных им медикаментов в целом и по указанной категории медикаментов.
@@ -319,7 +318,7 @@
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
 					breaklines=true,
-					caption={На определённый тип лекарств},
+					caption={В целом},
 					showstringspaces=false
 				]{../db/DML/queries/12-1.sql}
 				\lstinputlisting[
@@ -327,9 +326,17 @@
 					backgroundcolor=\color{backcolour},
 					basicstyle=\scriptsize,
 					breaklines=true,
-					caption={На конкретные медикаменты},
+					caption={На определённый тип лекарств},
 					showstringspaces=false
 				]{../db/DML/queries/12-2.sql}
+				\lstinputlisting[
+					language=SQL,
+					backgroundcolor=\color{backcolour},
+					basicstyle=\scriptsize,
+					breaklines=true,
+					caption={На конкретные медикаменты},
+					showstringspaces=false
+				]{../db/DML/queries/12-3.sql}
 			\item Получить сведения о конкретном лекарстве (его тип, способ приготовления, названия всех компонент, цены, его количество на складе).
 				\lstinputlisting[
 					language=SQL,

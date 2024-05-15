@@ -1,4 +1,4 @@
-create definer = llirik42@`%` trigger remove_production_components_from_storage
+create trigger remove_production_components_from_storage
     before insert
     on production
     for each row

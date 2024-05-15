@@ -1,4 +1,4 @@
-create definer = llirik42@`%` trigger remove_reserved_drug_from_storage
+create trigger remove_reserved_drug_from_storage
     before insert
     on reserved_drugs
     for each row

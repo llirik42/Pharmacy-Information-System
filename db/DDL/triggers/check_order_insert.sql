@@ -1,4 +1,4 @@
-create definer = llirik42@`%` trigger check_order_insert
+create trigger check_order_insert
     before insert
     on orders
     for each row

@@ -1,4 +1,4 @@
-create definer = llirik42@`%` trigger check_production_update
+create trigger check_production_update
     before update
     on production
     for each row

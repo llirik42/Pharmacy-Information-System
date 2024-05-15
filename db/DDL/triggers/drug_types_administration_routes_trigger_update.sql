@@ -1,4 +1,4 @@
-create definer = llirik42@`%` trigger drug_types_administration_routes_trigger_update
+create trigger drug_types_administration_routes_trigger_update
     before update
     on drug_types_administration_routes
     for each row

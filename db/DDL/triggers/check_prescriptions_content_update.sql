@@ -1,4 +1,4 @@
-create definer = llirik42@`%` trigger check_prescriptions_content_update
+create trigger check_prescriptions_content_update
     before update
     on prescriptions_content
     for each row

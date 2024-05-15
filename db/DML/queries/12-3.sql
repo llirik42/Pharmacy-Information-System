@@ -9,14 +9,13 @@ prepare stmt from '
             dense_rank() over (order by count(*) desc) as dr
         from orders
             join prescriptions_content using (prescription_id)
-            join drugs on prescriptions_content.drug_id = drugs.id
             join customers on orders.customer_id = customers.id
-        where type_id = ?
+        where drug_id = ?
         group by customer_id
         ) all_orders_count_data
     where dr = 1
 ';
 
-set @type_id = 2;
+set @drug_id = 3;
 
-execute stmt using @type_id;
+execute stmt using @drug_id;

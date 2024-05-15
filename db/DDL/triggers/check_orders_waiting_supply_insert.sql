@@ -1,4 +1,4 @@
-create definer = llirik42@`%` trigger check_orders_waiting_supply_insert
+create trigger check_orders_waiting_supply_insert
     before insert
     on orders_waiting_drug_supplies
     for each row
