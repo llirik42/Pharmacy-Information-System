@@ -656,4 +656,138 @@
 				caption={Триггер, проверяющий, что на складе достаточно лекарств для резервирования и удаляющий их со склада, если достаточно (до встави записи в таблицу \dbtableref{reserved\_drugs})},
 				showstringspaces=false
 			]{../db/DDL/triggers/remove_reserved_drug_from_storage.sql}
+	
+	\newpage
+	
+	\section{Архитектура системы}
+		Итоговая информационная система состоит из двух частей: серверная и клиентская.
+
+		\subsection{Серверная часть}
+			Серверная часть представляет собой веб-сервер, работающий по протоколу REST API. Веб сервер взаимодействует с реляционной базой данных MySQL и позволяет получать из неё данные, изменять и удалять их. Веб-сервер написан на языке программирования Python 3.10 с использованием следующих библиотек:
+			\begin{itemize}
+				\item FastAPI --- для работы самого веб-сервера;
+				
+				\item PyDantic --- для проверки данных в запросах;
+								
+				\item aiomysql --- для возможности работы с базой данных MySQL;
+								
+				\item SQLAlchemy --- для выполнения запросов к базе данных;
+											
+				\item Alembic --- для использования миграций базы данных;
+				
+				\item SQLAdmin --- для создания панели администратора.
+			\end{itemize}
+			
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.1]{screens/openapi}
+				\caption{Документация к веб-серверу в формате OpenAPI}
+			\end{figure}
+			
+		\subsection{Клиентская часть}
+			Клиентская часть включает в себя:
+			\begin{itemize}
+				\item desktop-приложение для работников кассы аптеки;
+				
+				\item панель администратора для системных администраторов.
+			\end{itemize}
+
+			\subsubsection{Desktop-приложение}
+				Desktop-приложение написано на языке программирования Java-17 с использованием платформы Swing. Приложение позволяет:
+				\begin{itemize}
+					\item просматривать содержимое некоторых (нужных для работников кассы) таблиц;
+					
+					\item выполнять все запросы к информационной системе;
+					
+					\item создавать и изменять заказы посетителей аптеки.
+				\end{itemize}
+					
+				\begin{figure}[H]
+					\centering
+					\fbox{\includegraphics[scale=0.25]{screens/desktop}}
+					\caption{Окно приложения}
+				\end{figure}
+				
+				\begin{figure}[H]
+					\centering
+					\fbox{\includegraphics[scale=0.25]{screens/desktop-modal-window}}
+					\caption{Пример модального окна для ввода параметров запроса}
+				\end{figure}
+			
+				\begin{figure}[H]
+					\centering
+					\fbox{\includegraphics[scale=0.25]{screens/desktop-table}}
+					\caption{Пример результата выполнения запроса}
+				\end{figure}
+			
+				\begin{figure}[H]
+					\centering
+					\fbox{\includegraphics[scale=0.25]{screens/desktop-order-creation}}
+					\caption{Форма для оформления заказа}
+				\end{figure}
+
+				\begin{figure}[H]
+					\centering
+					\fbox{\includegraphics[scale=0.25]{screens/desktop-order-info}}
+					\caption{Панель с информацией о заказе}
+				\end{figure}
+
+				\begin{figure}[H]
+					\centering
+					\fbox{\includegraphics[scale=0.25]{screens/desktop-drug-info}}
+					\caption{Панель с информацией о медикаменте}
+				\end{figure}
+				
+				\begin{figure}[H]
+					\centering
+					\fbox{\includegraphics[scale=0.25]{screens/desktop-order-info-model-window}}
+					\caption{Модальное окно для ввода номера заказа, по которому будет осуществлён поиск информации}
+				\end{figure}
+				
+				\begin{figure}[H]
+					\centering
+					\fbox{\includegraphics[scale=0.25]{screens/desktop-invalid-order-message}}
+					\caption{Сообщение о некорректном номере заказа}
+				\end{figure}
+				
+				\begin{figure}[H]
+					\centering
+					\fbox{\includegraphics[scale=0.25]{screens/desktop-order-not-found-message}}
+					\caption{Сообщение о том, что заказ не найден}
+				\end{figure}
+			\subsubsection{Панель администратора}
+				Панель администратора представляет собой сайт, запущенный на том же веб-сервере, что и серверная часть. Панель администратора позволяет просматривать, изменять и удалять содержимое всех таблиц.
+				
+				\begin{figure}[H]
+					\centering
+					\fbox{\includegraphics[scale=0.25]{screens/admin-panel}}
+					\caption{Общий вид панели администратора}
+				\end{figure}
+				
+				\begin{figure}[H]
+					\centering
+					\fbox{\includegraphics[scale=0.25]{screens/admin-panel-table}}
+					\caption{Пример просмотра содержимого таблицы}
+				\end{figure}
+				
+				\begin{figure}[H]
+					\centering
+					\fbox{\includegraphics[scale=0.25]{screens/admin-panel-new}}
+					\caption{Пример формы для добавления записи в таблицу}
+				\end{figure}
+				
+				\begin{figure}[H]
+					\centering
+					\fbox{\includegraphics[scale=0.25]{screens/admin-panel-edit}}
+					\caption{Пример формы для изменения записи таблицы}
+				\end{figure}
+				
+				\begin{figure}[H]
+					\centering
+					\fbox{\includegraphics[scale=0.25]{screens/admin-panel-info}}
+					\caption{Пример просмотра подробной информации о записи таблицы}
+				\end{figure}
+				
+	\section{Выводы}
+		В ходе работы была разработана структура базы данных информационной системы аптеки, а также реализованы серверная и клиентская части системы. выполняющие операции внесения данных в базу данных, редактирование данных и запросы.
 \end{document}
