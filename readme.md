@@ -1,4 +1,8 @@
-# Практическое задание по предмету «Базы данных». Реализация приложения базы данных в архитектуре клиент-сервер.
+# Задание по предмету «Базы данных». Реализация приложения базы данных в архитектуре клиент-сервер.
+
+## Реализация
+* [Frontend](https://github.com/llirik42/Pharmacy-Information-System-Frontend)
+* [Backend](https://github.com/llirik42/Pharmacy-Information-System-Backend)
 
 ## Задание
 
