@@ -4,7 +4,7 @@
 
 * [Клиентская часть](https://github.com/llirik42/Pharmacy-Information-System-Frontend)
 * [Серверная часть](https://github.com/llirik42/Pharmacy-Information-System-Backend)
-* [Отчёт](report.pdf)
+* [Отчёт](report/report.pdf)
 
 ## Задание
 
