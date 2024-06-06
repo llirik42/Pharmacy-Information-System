@@ -1,10 +1,11 @@
 # Реализация приложения базы данных в архитектуре клиент-сервер
 
+[Отчёт](report/report.pdf)
+
 ## Реализация
 
 * [Клиентская часть](https://github.com/llirik42/Pharmacy-Information-System-Frontend)
 * [Серверная часть](https://github.com/llirik42/Pharmacy-Information-System-Backend)
-* [Отчёт](report/report.pdf)
 
 ## Задание
 
